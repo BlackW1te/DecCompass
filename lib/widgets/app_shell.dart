@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 import 'shared_widgets.dart';
@@ -19,8 +21,10 @@ class _AppShellState extends State<AppShell> {
   @override
   Widget build(BuildContext context) {
     final bottomInset = MediaQuery.paddingOf(context).bottom;
+    const bottomNavReserve = 144.0;
 
     return Scaffold(
+      extendBody: true,
       body: Stack(
         children: [
           const _Backdrop(),
@@ -42,7 +46,7 @@ class _AppShellState extends State<AppShell> {
                         duration: const Duration(milliseconds: 220),
                         child: Padding(
                           key: ValueKey(_index),
-                          padding: EdgeInsets.fromLTRB(horizontal, 0, horizontal, 96 + bottomInset),
+                          padding: EdgeInsets.fromLTRB(horizontal, 0, horizontal, bottomNavReserve + bottomInset),
                           child: widget.tabs[_index],
                         ),
                       ),
@@ -54,17 +58,25 @@ class _AppShellState extends State<AppShell> {
           ),
         ],
       ),
-      bottomNavigationBar: Container(
-        padding: EdgeInsets.fromLTRB(14, 12, 14, 12 + bottomInset),
-        decoration: BoxDecoration(color: const Color(0xF2050505), border: Border(top: BorderSide(color: Colors.white.withValues(alpha: 0.04)))),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            BottomNavItem(label: 'Ana Sayfa', icon: Icons.home_rounded, active: _index == 0, onTap: () => setState(() => _index = 0)),
-            BottomNavItem(label: 'Harita', icon: Icons.map_rounded, active: _index == 1, onTap: () => setState(() => _index = 1)),
-            BottomNavItem(label: 'Projeler', icon: Icons.work_rounded, active: _index == 2, onTap: () => setState(() => _index = 2)),
-            BottomNavItem(label: 'Profil', icon: Icons.person_rounded, active: _index == 3, onTap: () => setState(() => _index = 3)),
-          ],
+      bottomNavigationBar: ClipRect(
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
+          child: Container(
+            padding: EdgeInsets.fromLTRB(14, 12, 14, 12 + bottomInset),
+            decoration: BoxDecoration(
+              color: const Color(0xB2050505),
+              border: Border(top: BorderSide(color: Colors.white.withValues(alpha: 0.06))),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                BottomNavItem(label: 'Ana Sayfa', icon: Icons.home_rounded, active: _index == 0, onTap: () => setState(() => _index = 0)),
+                BottomNavItem(label: 'Harita', icon: Icons.map_rounded, active: _index == 1, onTap: () => setState(() => _index = 1)),
+                BottomNavItem(label: 'Projeler', icon: Icons.work_rounded, active: _index == 2, onTap: () => setState(() => _index = 2)),
+                BottomNavItem(label: 'Profil', icon: Icons.person_rounded, active: _index == 3, onTap: () => setState(() => _index = 3)),
+              ],
+            ),
+          ),
         ),
       ),
     );
@@ -134,12 +146,15 @@ class _Backdrop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SizedBox.expand(
-      child: DecoratedBox(
-        decoration: BoxDecoration(color: Color(0xFF050505)),
-        child: Stack(
+        child: DecoratedBox(
+          decoration: BoxDecoration(color: Color(0xFF050505)),
+          child: Stack(
           children: [
             _Glow(top: -120, left: -60, size: 280, color: Color(0x1AA855F7)),
             _Glow(bottom: -120, right: -80, size: 320, color: Color(0x1A2563EB)),
+            _Glow(top: 240, left: -100, size: 220, color: Color(0x1022C55E)),
+            _Glow(bottom: 120, left: 20, size: 200, color: Color(0x0F8B5CF6)),
+            _Glow(bottom: 40, right: 20, size: 180, color: Color(0x0F38BDF8)),
           ],
         ),
       ),
