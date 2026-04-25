@@ -1,0 +1,4165 @@
+{
+  "metadata": {
+    "title": "Alan Bazlı Teknik İngilizce Test Havuzu",
+    "purpose": "Bilgisayar mühendisi adayının teknik İngilizce seviyesini ve seçilen/önerilen alandaki terim eksiklerini ölçmek; profil ekranında genel teknik İngilizce seviyesini göstermek; yol haritasına alan bazlı teknik İngilizce modülü eklemek.",
+    "version": "2.0",
+    "language": "tr-TR",
+    "totalQuestions": 150,
+    "questionsPerCategory": 10,
+    "categories": [
+      "Siber Güvenlik",
+      "Yapay Zeka ve Makine Öğrenmesi",
+      "Veri Bilimi ve Büyük Veri",
+      "Mobil Uygulama Geliştirme",
+      "Web Geliştirme (Full-Stack)",
+      "Oyun Geliştirme ve Grafik Programlama",
+      "Gömülü Sistemler ve IoT (Nesnelerin İnterneti)",
+      "Robotik ve Otomasyon",
+      "Bulut Bilişim ve DevOps",
+      "Yazılım Mimarisi ve Proje Yönetimi",
+      "Blokzincir Teknolojileri",
+      "Donanım ve Mikroişlemci Tasarımı",
+      "Bilgisayar Ağları ve Sistem Yönetimi",
+      "Dijital Adli Bilişim ve Kriptografi",
+      "Sanal ve Arttırılmış Gerçeklik (VR/AR)"
+    ],
+    "questionTypes": {
+      "en_to_tr": "İngilizce terimin Türkçe karşılığını ölçer.",
+      "tr_to_en": "Türkçe terimin İngilizce karşılığını ölçer.",
+      "definition": "Tanımdan doğru teknik terimi buldurur.",
+      "scenario": "Gerçek kullanım bağlamından teknik terimi buldurur.",
+      "term_field": "Terimin ilgili bilgisayar mühendisliği alanını ayırt ettirir."
+    },
+    "difficultyWeights": {
+      "easy": 1.0,
+      "medium": 1.5,
+      "hard": 2.0
+    },
+    "recommendedScoring": {
+      "overallTechnicalEnglishScore": "(sum(correctAnswerWeight) / sum(allQuestionWeights)) * 100",
+      "categoryScore": "(sum(correctWeightInCategory) / sum(allWeightsInCategory)) * 100",
+      "profileDisplay": {
+        "0-39": "Temel Seviye",
+        "40-69": "Orta Seviye",
+        "70-84": "İyi Seviye",
+        "85-100": "İleri Seviye"
+      },
+      "roadmapRule": "Adayın seçtiği veya sistemin önerdiği alandaki categoryScore 60 altındaysa yol haritasına '[Alan] Teknik İngilizce Öğrenimi' modülü eklenebilir.",
+      "recommendedTestUsage": {
+        "fullPool": "150 soru",
+        "normalSession": "60-75 soru",
+        "adaptiveSession": "Genel havuzdan 45-55 soru + adayın seçtiği/önerilen alandan 10-20 soru",
+        "avoidFatigue": "150 soruyu tek oturumda zorunlu yapmak yerine oturumlara bölmek daha sağlıklı olur."
+      }
+    },
+    "sourceCatalog": {
+      "uploaded_course_terms": {
+        "type": "uploaded_pdf",
+        "description": "BLM 287 Computer Engineering Courses: Mobile Programming, Web Design, Cloud Computing, IoT, Fuzzy Logic, ANN, Game Programming gibi alan terimleri."
+      },
+      "uploaded_data_mining_terms": {
+        "type": "uploaded_pdf",
+        "description": "BLM 288 Data Mining terms: data mining, query, classification, clustering, supervised learning, pattern recognition."
+      },
+      "uploaded_cybersecurity_terms": {
+        "type": "uploaded_pdf",
+        "description": "BLM 288 Cyber Security terms: firewall, password, encryption, authentication, phishing, malware, ransomware, vulnerabilities."
+      },
+      "uploaded_priority_areas": {
+        "type": "uploaded_pdf",
+        "description": "YÖK Priority Areas: network technologies, blockchain technology, cyber security, data science, machine learning, AR/VR."
+      },
+      "mdn_web_docs": {
+        "type": "web",
+        "description": "MDN Web Docs: web glossary, HTML, HTTP, REST, APIs, server-side rendering."
+      },
+      "android_developers": {
+        "type": "web",
+        "description": "Android Developers: Activity lifecycle and Fragment terminology."
+      },
+      "kubernetes_docs": {
+        "type": "web",
+        "description": "Kubernetes documentation: containers, pods, services, deployments, cluster components."
+      },
+      "ethereum_docs": {
+        "type": "web",
+        "description": "ethereum.org developer docs: smart contracts, accounts, public/private keys, transactions, gas."
+      },
+      "unity_docs": {
+        "type": "web",
+        "description": "Unity documentation/glossary: shaders, materials, rendering, AR, VR/XR terminology."
+      },
+      "nist_csrc": {
+        "type": "web",
+        "description": "NIST CSRC glossary: IoT devices, operational technology, cryptography and security terminology."
+      }
+    },
+    "notes": [
+      "Soruların bir kısmı kullanıcı tarafından yüklenen PDF terim listelerine dayalıdır.",
+      "PDF'lerde doğrudan bulunmayan modern alan terimleri için resmi/otoriter web kaynaklarından yararlanılmıştır.",
+      "Bu test alan belirleme algoritmasının ana girdisi değil; teknik İngilizce profil metriği ve yol haritası destek modülü için kullanılmalıdır."
+    ]
+  },
+  "questions": [
+    {
+      "id": "TEQ-001",
+      "category": "Siber Güvenlik",
+      "questionType": "en_to_tr",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Firewall\" teriminin Türkçe karşılığı nedir?",
+      "options": [
+        "Güvenlik duvarı",
+        "Veri tabanı",
+        "İşletim sistemi",
+        "Yedekleme"
+      ],
+      "correctAnswer": "Güvenlik duvarı",
+      "correctIndex": 0,
+      "explanation": "Firewall, ağ trafiğini belirli kurallara göre filtreleyen güvenlik duvarıdır.",
+      "sourceTerms": [
+        "firewall"
+      ],
+      "roadmapTriggerIfWrong": "Siber Güvenlik Teknik İngilizce Öğrenimi",
+      "subTopic": "Siber Güvenlik",
+      "sourceReferences": [
+        "uploaded_cybersecurity_terms",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-002",
+      "category": "Siber Güvenlik",
+      "questionType": "tr_to_en",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Şifreleme / kriptolama\" teriminin İngilizce karşılığı nedir?",
+      "options": [
+        "Encryption",
+        "Rendering",
+        "Compilation",
+        "Scrolling"
+      ],
+      "correctAnswer": "Encryption",
+      "correctIndex": 0,
+      "explanation": "Encryption, verinin okunamaz hale getirilmesi için kullanılan şifreleme işlemidir.",
+      "sourceTerms": [
+        "encryption"
+      ],
+      "roadmapTriggerIfWrong": "Siber Güvenlik Teknik İngilizce Öğrenimi",
+      "subTopic": "Siber Güvenlik",
+      "sourceReferences": [
+        "uploaded_cybersecurity_terms",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-003",
+      "category": "Siber Güvenlik",
+      "questionType": "scenario",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Kullanıcı, sahte bir banka sitesine yönlendirilip parola bilgisini giriyor. Bu saldırı türü hangi terimle ifade edilir?",
+      "options": [
+        "Phishing",
+        "Backup",
+        "Monitoring",
+        "Compression"
+      ],
+      "correctAnswer": "Phishing",
+      "correctIndex": 0,
+      "explanation": "Phishing, sahte e-posta, mesaj veya web siteleriyle bilgi ele geçirme saldırısıdır.",
+      "sourceTerms": [
+        "phishing"
+      ],
+      "roadmapTriggerIfWrong": "Siber Güvenlik Teknik İngilizce Öğrenimi",
+      "subTopic": "Siber Güvenlik",
+      "sourceReferences": [
+        "uploaded_cybersecurity_terms",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-004",
+      "category": "Siber Güvenlik",
+      "questionType": "en_to_tr",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"Multi-factor authentication\" ifadesi Türkçede en doğru hangi anlama gelir?",
+      "options": [
+        "Çok faktörlü doğrulama",
+        "Uzaktan yönetim",
+        "Güvenlik zayıflığı",
+        "Veri kullanılabilirliği"
+      ],
+      "correctAnswer": "Çok faktörlü doğrulama",
+      "correctIndex": 0,
+      "explanation": "Multi-factor authentication, parolanın yanında ek doğrulama adımlarının kullanılmasıdır.",
+      "sourceTerms": [
+        "multi-factor authentication"
+      ],
+      "roadmapTriggerIfWrong": "Siber Güvenlik Teknik İngilizce Öğrenimi",
+      "subTopic": "Siber Güvenlik",
+      "sourceReferences": [
+        "uploaded_cybersecurity_terms",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-005",
+      "category": "Siber Güvenlik",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Sistemdeki zayıf noktaları ifade eden İngilizce teknik terim hangisidir?",
+      "options": [
+        "Vulnerabilities",
+        "Availability",
+        "Safeguards",
+        "Username"
+      ],
+      "correctAnswer": "Vulnerabilities",
+      "correctIndex": 0,
+      "explanation": "Vulnerabilities, saldırganların faydalanabileceği güvenlik açıklıkları/zayıflıklarıdır.",
+      "sourceTerms": [
+        "vulnerabilities"
+      ],
+      "roadmapTriggerIfWrong": "Siber Güvenlik Teknik İngilizce Öğrenimi",
+      "subTopic": "Siber Güvenlik",
+      "sourceReferences": [
+        "uploaded_cybersecurity_terms",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-006",
+      "category": "Siber Güvenlik",
+      "questionType": "en_to_tr",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Malware\" teriminin Türkçe karşılığı nedir?",
+      "options": [
+        "Kötü amaçlı yazılım",
+        "Akıllı uygulama",
+        "Veri madenciliği",
+        "Bulut çözümü"
+      ],
+      "correctAnswer": "Kötü amaçlı yazılım",
+      "correctIndex": 0,
+      "explanation": "Malware, sisteme zarar vermek veya veri çalmak için kullanılan kötü amaçlı yazılımdır.",
+      "sourceTerms": [
+        "malware"
+      ],
+      "roadmapTriggerIfWrong": "Siber Güvenlik Teknik İngilizce Öğrenimi",
+      "subTopic": "Siber Güvenlik",
+      "sourceReferences": [
+        "uploaded_cybersecurity_terms",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-007",
+      "category": "Siber Güvenlik",
+      "questionType": "en_to_tr",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"Ransomware\" Türkçede hangi terimle ifade edilir?",
+      "options": [
+        "Fidye yazılım",
+        "Casus yazılım",
+        "Güvenlik kültürü",
+        "Sistem bütünleşmesi"
+      ],
+      "correctAnswer": "Fidye yazılım",
+      "correctIndex": 0,
+      "explanation": "Ransomware, dosyaları kilitleyip fidye talep eden zararlı yazılım türüdür.",
+      "sourceTerms": [
+        "ransomware"
+      ],
+      "roadmapTriggerIfWrong": "Siber Güvenlik Teknik İngilizce Öğrenimi",
+      "subTopic": "Siber Güvenlik",
+      "sourceReferences": [
+        "uploaded_cybersecurity_terms",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-008",
+      "category": "Siber Güvenlik",
+      "questionType": "scenario",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Bir kurum, güvenlik olayından sonra hasarı sınırlandırmak ve sistemi eski haline getirmek istiyor. Bu süreçte hangi terim özellikle öne çıkar?",
+      "options": [
+        "Recover",
+        "Browsing",
+        "Rendering",
+        "Overwriting"
+      ],
+      "correctAnswer": "Recover",
+      "correctIndex": 0,
+      "explanation": "Recover, güvenlik olayı veya arıza sonrasında sistemi kurtarma/geri alma sürecidir.",
+      "sourceTerms": [
+        "recover"
+      ],
+      "roadmapTriggerIfWrong": "Siber Güvenlik Teknik İngilizce Öğrenimi",
+      "subTopic": "Siber Güvenlik",
+      "sourceReferences": [
+        "uploaded_cybersecurity_terms",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-009",
+      "category": "Siber Güvenlik",
+      "questionType": "term_field",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Cybersecurity risk\" en çok hangi alanla ilişkilidir?",
+      "options": [
+        "Siber Güvenlik",
+        "Oyun Geliştirme",
+        "Mobil Programlama",
+        "Grafik Tasarım"
+      ],
+      "correctAnswer": "Siber Güvenlik",
+      "correctIndex": 0,
+      "explanation": "Cybersecurity risk, siber güvenlikte tehdit ve zayıflıkların oluşturduğu riski anlatır.",
+      "sourceTerms": [
+        "cybersecurity risk"
+      ],
+      "roadmapTriggerIfWrong": "Siber Güvenlik Teknik İngilizce Öğrenimi",
+      "subTopic": "Siber Güvenlik",
+      "sourceReferences": [
+        "uploaded_cybersecurity_terms",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-010",
+      "category": "Siber Güvenlik",
+      "questionType": "definition",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "Verinin yetkisiz değişime uğramadan doğru ve tutarlı kalmasını ifade eden İngilizce kavram hangisidir?",
+      "options": [
+        "Integrity of data",
+        "Availability of data",
+        "Digital privacy",
+        "Cloud storage"
+      ],
+      "correctAnswer": "Integrity of data",
+      "correctIndex": 0,
+      "explanation": "Integrity of data, verinin bütünlüğünün korunması anlamına gelir.",
+      "sourceTerms": [
+        "integrity of data"
+      ],
+      "roadmapTriggerIfWrong": "Siber Güvenlik Teknik İngilizce Öğrenimi",
+      "subTopic": "Siber Güvenlik",
+      "sourceReferences": [
+        "uploaded_cybersecurity_terms",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-011",
+      "category": "Yapay Zeka ve Makine Öğrenmesi",
+      "questionType": "en_to_tr",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Artificial Intelligence\" teriminin Türkçe karşılığı nedir?",
+      "options": [
+        "Yapay zeka",
+        "Sanal gerçeklik",
+        "Veri tabanı",
+        "Ağ teknolojisi"
+      ],
+      "correctAnswer": "Yapay zeka",
+      "correctIndex": 0,
+      "explanation": "Artificial Intelligence, insan zekasına benzer karar verme ve öğrenme süreçlerini ifade eder.",
+      "sourceTerms": [
+        "artificial intelligence"
+      ],
+      "roadmapTriggerIfWrong": "Yapay Zeka ve Makine Öğrenmesi Teknik İngilizce Öğrenimi",
+      "subTopic": "Yapay Zeka ve Makine Öğrenmesi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_data_mining_terms"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-012",
+      "category": "Yapay Zeka ve Makine Öğrenmesi",
+      "questionType": "tr_to_en",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Makine öğrenmesi\" İngilizcede nasıl ifade edilir?",
+      "options": [
+        "Machine learning",
+        "Machine code",
+        "Mainframe",
+        "Microprocessor"
+      ],
+      "correctAnswer": "Machine learning",
+      "correctIndex": 0,
+      "explanation": "Machine learning, veriden öğrenerek tahmin/karar üreten yöntemleri kapsar.",
+      "sourceTerms": [
+        "machine learning"
+      ],
+      "roadmapTriggerIfWrong": "Yapay Zeka ve Makine Öğrenmesi Teknik İngilizce Öğrenimi",
+      "subTopic": "Yapay Zeka ve Makine Öğrenmesi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_data_mining_terms"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-013",
+      "category": "Yapay Zeka ve Makine Öğrenmesi",
+      "questionType": "en_to_tr",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"Artificial Neural Network (ANN)\" teriminin Türkçe karşılığı nedir?",
+      "options": [
+        "Yapay sinir ağı",
+        "Nesne yönelimli dil",
+        "Veri tabanı yönetimi",
+        "Güvenlik duvarı"
+      ],
+      "correctAnswer": "Yapay sinir ağı",
+      "correctIndex": 0,
+      "explanation": "ANN, insan beynindeki sinir ağlarından esinlenen yapay zeka modelidir.",
+      "sourceTerms": [
+        "ANN",
+        "artificial neural networks"
+      ],
+      "roadmapTriggerIfWrong": "Yapay Zeka ve Makine Öğrenmesi Teknik İngilizce Öğrenimi",
+      "subTopic": "Yapay Zeka ve Makine Öğrenmesi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_data_mining_terms"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-014",
+      "category": "Yapay Zeka ve Makine Öğrenmesi",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Bir görüntüdeki nesneleri ayırt etmeye yönelik süreç hangi İngilizce terimle ifade edilir?",
+      "options": [
+        "Image recognition",
+        "File maintenance",
+        "Data transmission",
+        "Project management"
+      ],
+      "correctAnswer": "Image recognition",
+      "correctIndex": 0,
+      "explanation": "Image recognition, görüntü içindeki nesne veya desenleri tanıma sürecidir.",
+      "sourceTerms": [
+        "image recognition"
+      ],
+      "roadmapTriggerIfWrong": "Yapay Zeka ve Makine Öğrenmesi Teknik İngilizce Öğrenimi",
+      "subTopic": "Yapay Zeka ve Makine Öğrenmesi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_data_mining_terms"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-015",
+      "category": "Yapay Zeka ve Makine Öğrenmesi",
+      "questionType": "scenario",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Bir model, ses kaydını metne dönüştürüyor. Bu görev hangi teknik terimle en yakından ilişkilidir?",
+      "options": [
+        "Speech recognition",
+        "Storage protection",
+        "Search and replace",
+        "System simulation"
+      ],
+      "correctAnswer": "Speech recognition",
+      "correctIndex": 0,
+      "explanation": "Speech recognition, konuşma sinyalini tanıma ve işleme sürecidir.",
+      "sourceTerms": [
+        "speech recognition"
+      ],
+      "roadmapTriggerIfWrong": "Yapay Zeka ve Makine Öğrenmesi Teknik İngilizce Öğrenimi",
+      "subTopic": "Yapay Zeka ve Makine Öğrenmesi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_data_mining_terms"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-016",
+      "category": "Yapay Zeka ve Makine Öğrenmesi",
+      "questionType": "definition",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "Etiketli eğitim verileriyle öğrenme yaklaşımını ifade eden terim hangisidir?",
+      "options": [
+        "Supervised learning",
+        "Self-learning",
+        "Data transmission",
+        "Rendering"
+      ],
+      "correctAnswer": "Supervised learning",
+      "correctIndex": 0,
+      "explanation": "Supervised learning, doğru cevapları bilinen veriyle model eğitme yaklaşımıdır.",
+      "sourceTerms": [
+        "supervised learning"
+      ],
+      "roadmapTriggerIfWrong": "Yapay Zeka ve Makine Öğrenmesi Teknik İngilizce Öğrenimi",
+      "subTopic": "Yapay Zeka ve Makine Öğrenmesi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_data_mining_terms"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-017",
+      "category": "Yapay Zeka ve Makine Öğrenmesi",
+      "questionType": "en_to_tr",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"Pattern recognition\" Türkçede en doğru hangi anlama gelir?",
+      "options": [
+        "Örüntü tanıma",
+        "Sistem bütünleşmesi",
+        "Veri kullanılabilirliği",
+        "Dosya koruma"
+      ],
+      "correctAnswer": "Örüntü tanıma",
+      "correctIndex": 0,
+      "explanation": "Pattern recognition, verilerde tekrar eden desenleri/örüntüleri tanıma sürecidir.",
+      "sourceTerms": [
+        "pattern recognition"
+      ],
+      "roadmapTriggerIfWrong": "Yapay Zeka ve Makine Öğrenmesi Teknik İngilizce Öğrenimi",
+      "subTopic": "Yapay Zeka ve Makine Öğrenmesi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_data_mining_terms"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-018",
+      "category": "Yapay Zeka ve Makine Öğrenmesi",
+      "questionType": "scenario",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "Bir model, e-postaları 'spam' ve 'spam değil' olarak ayırıyor. Bu görev makine öğrenmesinde en çok hangi terimle ilişkilidir?",
+      "options": [
+        "Classification",
+        "Clustering",
+        "Rendering",
+        "Spooling"
+      ],
+      "correctAnswer": "Classification",
+      "correctIndex": 0,
+      "explanation": "Classification, verileri önceden tanımlı sınıflara ayırma işlemidir.",
+      "sourceTerms": [
+        "classification"
+      ],
+      "roadmapTriggerIfWrong": "Yapay Zeka ve Makine Öğrenmesi Teknik İngilizce Öğrenimi",
+      "subTopic": "Yapay Zeka ve Makine Öğrenmesi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_data_mining_terms"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-019",
+      "category": "Yapay Zeka ve Makine Öğrenmesi",
+      "questionType": "term_field",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Job recommendations\" ifadesi hangi AI/ML kullanımına örnek olabilir?",
+      "options": [
+        "Öneri sistemi",
+        "Dosya sıkıştırma",
+        "Ağ yönlendirme",
+        "Ekran ölçeklendirme"
+      ],
+      "correctAnswer": "Öneri sistemi",
+      "correctIndex": 0,
+      "explanation": "Job recommendations, kullanıcının profiline göre iş önerisi sunan öneri sistemlerine örnektir.",
+      "sourceTerms": [
+        "job recommendations"
+      ],
+      "roadmapTriggerIfWrong": "Yapay Zeka ve Makine Öğrenmesi Teknik İngilizce Öğrenimi",
+      "subTopic": "Yapay Zeka ve Makine Öğrenmesi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_data_mining_terms"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-020",
+      "category": "Yapay Zeka ve Makine Öğrenmesi",
+      "questionType": "definition",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "Bir yapay sinirde çıktının oluşup oluşmayacağını belirleyen matematiksel yapı hangi terimdir?",
+      "options": [
+        "Threshold function",
+        "Transmission channel",
+        "Default format",
+        "Landscape format"
+      ],
+      "correctAnswer": "Threshold function",
+      "correctIndex": 0,
+      "explanation": "Threshold function, belirli eşik değerine göre çıktıyı 0/1 gibi sınıflandıran fonksiyondur.",
+      "sourceTerms": [
+        "threshold function"
+      ],
+      "roadmapTriggerIfWrong": "Yapay Zeka ve Makine Öğrenmesi Teknik İngilizce Öğrenimi",
+      "subTopic": "Yapay Zeka ve Makine Öğrenmesi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_data_mining_terms"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-021",
+      "category": "Veri Bilimi ve Büyük Veri",
+      "questionType": "en_to_tr",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Data mining\" teriminin Türkçe karşılığı nedir?",
+      "options": [
+        "Veri madenciliği",
+        "Veri koruma",
+        "Veri iletimi",
+        "Veri girişi"
+      ],
+      "correctAnswer": "Veri madenciliği",
+      "correctIndex": 0,
+      "explanation": "Data mining, veriden anlamlı örüntüler ve bilgiler çıkarma sürecidir.",
+      "sourceTerms": [
+        "data mining"
+      ],
+      "roadmapTriggerIfWrong": "Veri Bilimi ve Büyük Veri Teknik İngilizce Öğrenimi",
+      "subTopic": "Veri Bilimi ve Büyük Veri",
+      "sourceReferences": [
+        "uploaded_data_mining_terms",
+        "uploaded_priority_areas"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-022",
+      "category": "Veri Bilimi ve Büyük Veri",
+      "questionType": "tr_to_en",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Büyük veri teknolojileri\" ifadesinin İngilizce karşılığı nedir?",
+      "options": [
+        "Big data technology",
+        "Data entry",
+        "Digital signature",
+        "Database language"
+      ],
+      "correctAnswer": "Big data technology",
+      "correctIndex": 0,
+      "explanation": "Big data technology, büyük hacimli veriyi saklama ve işleme teknolojilerini ifade eder.",
+      "sourceTerms": [
+        "big data technology"
+      ],
+      "roadmapTriggerIfWrong": "Veri Bilimi ve Büyük Veri Teknik İngilizce Öğrenimi",
+      "subTopic": "Veri Bilimi ve Büyük Veri",
+      "sourceReferences": [
+        "uploaded_data_mining_terms",
+        "uploaded_priority_areas"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-023",
+      "category": "Veri Bilimi ve Büyük Veri",
+      "questionType": "en_to_tr",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Raw data\" Türkçede ne anlama gelir?",
+      "options": [
+        "Ham veri",
+        "Gizli bilgi",
+        "Veri tabanı",
+        "İlişki analizi"
+      ],
+      "correctAnswer": "Ham veri",
+      "correctIndex": 0,
+      "explanation": "Raw data, henüz işlenmemiş veri anlamına gelir.",
+      "sourceTerms": [
+        "raw data"
+      ],
+      "roadmapTriggerIfWrong": "Veri Bilimi ve Büyük Veri Teknik İngilizce Öğrenimi",
+      "subTopic": "Veri Bilimi ve Büyük Veri",
+      "sourceReferences": [
+        "uploaded_data_mining_terms",
+        "uploaded_priority_areas"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-024",
+      "category": "Veri Bilimi ve Büyük Veri",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Veri tabanından belirli koşullara göre veri isteme işlemine ne denir?",
+      "options": [
+        "Query",
+        "Backup",
+        "Routing",
+        "Rendering"
+      ],
+      "correctAnswer": "Query",
+      "correctIndex": 0,
+      "explanation": "Query, veri tabanından belirli koşullara göre veri getirme talebidir.",
+      "sourceTerms": [
+        "query"
+      ],
+      "roadmapTriggerIfWrong": "Veri Bilimi ve Büyük Veri Teknik İngilizce Öğrenimi",
+      "subTopic": "Veri Bilimi ve Büyük Veri",
+      "sourceReferences": [
+        "uploaded_data_mining_terms",
+        "uploaded_priority_areas"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-025",
+      "category": "Veri Bilimi ve Büyük Veri",
+      "questionType": "en_to_tr",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"Clustering\" terimi Türkçede hangi anlama gelir?",
+      "options": [
+        "Kümelenme",
+        "Sınıflandırma",
+        "Şifreleme",
+        "Kopyalama"
+      ],
+      "correctAnswer": "Kümelenme",
+      "correctIndex": 0,
+      "explanation": "Clustering, benzer verileri doğal gruplar halinde toplama işlemidir.",
+      "sourceTerms": [
+        "clustering"
+      ],
+      "roadmapTriggerIfWrong": "Veri Bilimi ve Büyük Veri Teknik İngilizce Öğrenimi",
+      "subTopic": "Veri Bilimi ve Büyük Veri",
+      "sourceReferences": [
+        "uploaded_data_mining_terms",
+        "uploaded_priority_areas"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-026",
+      "category": "Veri Bilimi ve Büyük Veri",
+      "questionType": "scenario",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Bir sistem, geçmiş satış verilerine bakarak gelecek ayın satış miktarını tahmin ediyor. Bu görev hangi terimle daha yakından ilişkilidir?",
+      "options": [
+        "Predictive",
+        "Descriptive",
+        "Unauthorized use",
+        "Default name"
+      ],
+      "correctAnswer": "Predictive",
+      "correctIndex": 0,
+      "explanation": "Predictive, geleceğe yönelik tahmin üretmeyi ifade eder.",
+      "sourceTerms": [
+        "predictive"
+      ],
+      "roadmapTriggerIfWrong": "Veri Bilimi ve Büyük Veri Teknik İngilizce Öğrenimi",
+      "subTopic": "Veri Bilimi ve Büyük Veri",
+      "sourceReferences": [
+        "uploaded_data_mining_terms",
+        "uploaded_priority_areas"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-027",
+      "category": "Veri Bilimi ve Büyük Veri",
+      "questionType": "definition",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "Ürünlerin birlikte satın alınma örüntülerini bulmaya çalışan veri madenciliği yöntemi hangisidir?",
+      "options": [
+        "Association Rule Mining",
+        "Speech coding",
+        "Raster graphics",
+        "Data transmission"
+      ],
+      "correctAnswer": "Association Rule Mining",
+      "correctIndex": 0,
+      "explanation": "Association Rule Mining, birlikte gerçekleşen olaylar/ürünler arasındaki kuralları bulur.",
+      "sourceTerms": [
+        "association rule mining"
+      ],
+      "roadmapTriggerIfWrong": "Veri Bilimi ve Büyük Veri Teknik İngilizce Öğrenimi",
+      "subTopic": "Veri Bilimi ve Büyük Veri",
+      "sourceReferences": [
+        "uploaded_data_mining_terms",
+        "uploaded_priority_areas"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-028",
+      "category": "Veri Bilimi ve Büyük Veri",
+      "questionType": "en_to_tr",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "\"Time series analysis\" Türkçede hangi anlama gelir?",
+      "options": [
+        "Zaman serileri analizi",
+        "İletim süresi",
+        "Sistem simülasyonu",
+        "Sayısal kontrol"
+      ],
+      "correctAnswer": "Zaman serileri analizi",
+      "correctIndex": 0,
+      "explanation": "Time series analysis, zamana bağlı verilerin analiz edilmesidir.",
+      "sourceTerms": [
+        "time series analysis"
+      ],
+      "roadmapTriggerIfWrong": "Veri Bilimi ve Büyük Veri Teknik İngilizce Öğrenimi",
+      "subTopic": "Veri Bilimi ve Büyük Veri",
+      "sourceReferences": [
+        "uploaded_data_mining_terms",
+        "uploaded_priority_areas"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-029",
+      "category": "Veri Bilimi ve Büyük Veri",
+      "questionType": "term_field",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"Exploratory data analysis\" en çok hangi alanın teknik İngilizcesine aittir?",
+      "options": [
+        "Veri Bilimi ve Büyük Veri",
+        "Mobil Uygulama Geliştirme",
+        "Robotik ve Otomasyon",
+        "Blokzincir Teknolojileri"
+      ],
+      "correctAnswer": "Veri Bilimi ve Büyük Veri",
+      "correctIndex": 0,
+      "explanation": "Exploratory data analysis, veri setini anlamak için yapılan keşifsel analiz sürecidir.",
+      "sourceTerms": [
+        "exploratory data analysis"
+      ],
+      "roadmapTriggerIfWrong": "Veri Bilimi ve Büyük Veri Teknik İngilizce Öğrenimi",
+      "subTopic": "Veri Bilimi ve Büyük Veri",
+      "sourceReferences": [
+        "uploaded_data_mining_terms",
+        "uploaded_priority_areas"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-030",
+      "category": "Veri Bilimi ve Büyük Veri",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Verileri kısa ve anlamlı biçimde özetleme işlemi hangi İngilizce terimle ifade edilir?",
+      "options": [
+        "Summarization",
+        "Authentication",
+        "Compilation",
+        "Segmentation"
+      ],
+      "correctAnswer": "Summarization",
+      "correctIndex": 0,
+      "explanation": "Summarization, bilgiyi daha kısa ve anlamlı hale getirme sürecidir.",
+      "sourceTerms": [
+        "summarization"
+      ],
+      "roadmapTriggerIfWrong": "Veri Bilimi ve Büyük Veri Teknik İngilizce Öğrenimi",
+      "subTopic": "Veri Bilimi ve Büyük Veri",
+      "sourceReferences": [
+        "uploaded_data_mining_terms",
+        "uploaded_priority_areas"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "category": "Mobil Uygulama Geliştirme",
+      "subTopic": "Mobil Uygulama Geliştirme",
+      "questionType": "en_to_tr",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Mobile Programming\" teriminin Türkçe karşılığı nedir?",
+      "options": [
+        "Mobil programlama",
+        "Ağ yönetimi",
+        "Veri madenciliği",
+        "Mikroişlemciler"
+      ],
+      "correctAnswer": "Mobil programlama",
+      "correctIndex": 0,
+      "explanation": "Mobile Programming, mobil cihazlar için uygulama geliştirme alanıdır.",
+      "sourceTerms": [
+        "mobile programming"
+      ],
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "android_developers"
+      ],
+      "roadmapTriggerIfWrong": "Mobil Uygulama Geliştirme Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-031"
+    },
+    {
+      "category": "Mobil Uygulama Geliştirme",
+      "subTopic": "Mobil Uygulama Geliştirme",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Android tarafında kullanıcının gördüğü bir ekranı ve bu ekranda yapılabilen işlemleri temsil eden temel bileşen hangisidir?",
+      "options": [
+        "Activity",
+        "Fragment",
+        "Intent",
+        "Gradle"
+      ],
+      "correctAnswer": "Activity",
+      "correctIndex": 0,
+      "explanation": "Activity, Android uygulamasında UI ve kullanıcı etkileşimlerini kapsayan temel ekran bileşenidir.",
+      "sourceTerms": [
+        "Activity"
+      ],
+      "sourceReferences": [
+        "android_developers"
+      ],
+      "roadmapTriggerIfWrong": "Mobil Uygulama Geliştirme Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-032"
+    },
+    {
+      "category": "Mobil Uygulama Geliştirme",
+      "subTopic": "Mobil Uygulama Geliştirme",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Bir Android ekranının yeniden kullanılabilir UI parçasını ifade eden terim hangisidir?",
+      "options": [
+        "Fragment",
+        "Service",
+        "Manifest",
+        "Emulator"
+      ],
+      "correctAnswer": "Fragment",
+      "correctIndex": 0,
+      "explanation": "Fragment, bir uygulama arayüzünün yeniden kullanılabilir ve kendi yaşam döngüsüne sahip bölümüdür.",
+      "sourceTerms": [
+        "Fragment"
+      ],
+      "sourceReferences": [
+        "android_developers"
+      ],
+      "roadmapTriggerIfWrong": "Mobil Uygulama Geliştirme Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-033"
+    },
+    {
+      "category": "Mobil Uygulama Geliştirme",
+      "subTopic": "Mobil Uygulama Geliştirme",
+      "questionType": "scenario",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Bir mobil ekranda onCreate, onStart, onResume, onPause gibi durumlar takip ediliyorsa hangi kavram ölçülmektedir?",
+      "options": [
+        "Activity lifecycle",
+        "REST API",
+        "Query language",
+        "Data mining"
+      ],
+      "correctAnswer": "Activity lifecycle",
+      "correctIndex": 0,
+      "explanation": "Activity lifecycle, mobil ekranın oluşturulma, görünme, duraklama ve yok edilme süreçlerini anlatır.",
+      "sourceTerms": [
+        "Activity lifecycle"
+      ],
+      "sourceReferences": [
+        "android_developers"
+      ],
+      "roadmapTriggerIfWrong": "Mobil Uygulama Geliştirme Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-034"
+    },
+    {
+      "category": "Mobil Uygulama Geliştirme",
+      "subTopic": "Mobil Uygulama Geliştirme",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Mobil uygulamada bir ekrandan başka bir ekrana geçiş isteğini veya sistem aksiyonunu taşımak için kullanılan Android kavramı hangisidir?",
+      "options": [
+        "Intent",
+        "Pixel",
+        "Port",
+        "Router"
+      ],
+      "correctAnswer": "Intent",
+      "correctIndex": 0,
+      "explanation": "Intent, Android'de bir aksiyonu veya ekranlar arası geçişi bildiren mesaj yapısıdır.",
+      "sourceTerms": [
+        "Intent"
+      ],
+      "sourceReferences": [
+        "android_developers"
+      ],
+      "roadmapTriggerIfWrong": "Mobil Uygulama Geliştirme Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-035"
+    },
+    {
+      "category": "Mobil Uygulama Geliştirme",
+      "subTopic": "Mobil Uygulama Geliştirme",
+      "questionType": "en_to_tr",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Touch screen\" Türkçede ne anlama gelir?",
+      "options": [
+        "Dokunma duyarlı ekran",
+        "Görüntü belleği",
+        "Veri yolu ağı",
+        "Yazılım korsanlığı"
+      ],
+      "correctAnswer": "Dokunma duyarlı ekran",
+      "correctIndex": 0,
+      "explanation": "Touch screen, kullanıcının ekrana dokunarak etkileşim kurduğu ekran türüdür.",
+      "sourceTerms": [
+        "touch screen"
+      ],
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "android_developers"
+      ],
+      "roadmapTriggerIfWrong": "Mobil Uygulama Geliştirme Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-036"
+    },
+    {
+      "category": "Mobil Uygulama Geliştirme",
+      "subTopic": "Mobil Uygulama Geliştirme",
+      "questionType": "scenario",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Bir mobil uygulama internet yokken sınırlı çalışıyor ve bağlantı gelince verileri tekrar eşitliyor. Bu durum hangi kavramla ilişkilidir?",
+      "options": [
+        "Offline support",
+        "Source code",
+        "Firewall",
+        "Shader"
+      ],
+      "correctAnswer": "Offline support",
+      "correctIndex": 0,
+      "explanation": "Offline support, uygulamanın bağlantı yokken de belirli ölçüde çalışabilmesidir.",
+      "sourceTerms": [
+        "offline support"
+      ],
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "android_developers"
+      ],
+      "roadmapTriggerIfWrong": "Mobil Uygulama Geliştirme Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-037"
+    },
+    {
+      "category": "Mobil Uygulama Geliştirme",
+      "subTopic": "Mobil Uygulama Geliştirme",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Uygulamada kullanıcının cevabını istemek için gösterilen mesaj hangi terimdir?",
+      "options": [
+        "Prompt",
+        "Pixel",
+        "Port",
+        "Protocol"
+      ],
+      "correctAnswer": "Prompt",
+      "correctIndex": 0,
+      "explanation": "Prompt, kullanıcıdan giriş veya cevap isteyen mesajdır.",
+      "sourceTerms": [
+        "prompt"
+      ],
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "android_developers"
+      ],
+      "roadmapTriggerIfWrong": "Mobil Uygulama Geliştirme Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-038"
+    },
+    {
+      "category": "Mobil Uygulama Geliştirme",
+      "subTopic": "Mobil Uygulama Geliştirme",
+      "questionType": "en_to_tr",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"User-friendly\" teriminin Türkçe karşılığı nedir?",
+      "options": [
+        "Kullanıcı dostu",
+        "Kullanıcı kimliği",
+        "Güvenlik zayıflığı",
+        "Dosya sunucusu"
+      ],
+      "correctAnswer": "Kullanıcı dostu",
+      "correctIndex": 0,
+      "explanation": "User-friendly, kolay ve rahat kullanılabilen arayüzleri ifade eder.",
+      "sourceTerms": [
+        "user-friendly"
+      ],
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "android_developers"
+      ],
+      "roadmapTriggerIfWrong": "Mobil Uygulama Geliştirme Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-039"
+    },
+    {
+      "category": "Mobil Uygulama Geliştirme",
+      "subTopic": "Mobil Uygulama Geliştirme",
+      "questionType": "scenario",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "Bir uygulama son yapılan işlemi geri aldırıyorsa bu özellik hangi İngilizce terimle ifade edilir?",
+      "options": [
+        "Undo",
+        "Merge",
+        "Trace",
+        "Bind"
+      ],
+      "correctAnswer": "Undo",
+      "correctIndex": 0,
+      "explanation": "Undo, son yapılan işlemi geri alma işlevidir.",
+      "sourceTerms": [
+        "undo"
+      ],
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "android_developers"
+      ],
+      "roadmapTriggerIfWrong": "Mobil Uygulama Geliştirme Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-040"
+    },
+    {
+      "category": "Web Geliştirme (Full-Stack)",
+      "subTopic": "Web Geliştirme (Full-Stack)",
+      "questionType": "en_to_tr",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Web Design\" teriminin Türkçe karşılığı nedir?",
+      "options": [
+        "Web tasarımı",
+        "Kablosuz ağlar",
+        "Proje yönetimi",
+        "Sayısal kontrol"
+      ],
+      "correctAnswer": "Web tasarımı",
+      "correctIndex": 0,
+      "explanation": "Web Design, web sayfalarının görsel ve kullanılabilirlik tasarımıdır.",
+      "sourceTerms": [
+        "web design"
+      ],
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "mdn_web_docs"
+      ],
+      "roadmapTriggerIfWrong": "Web Geliştirme (Full-Stack) Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-041"
+    },
+    {
+      "category": "Web Geliştirme (Full-Stack)",
+      "subTopic": "Web Geliştirme (Full-Stack)",
+      "questionType": "en_to_tr",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"HTML\" açılımı nedir?",
+      "options": [
+        "Hyper Text Markup Language",
+        "High Transfer Machine Logic",
+        "Host Text Management Layer",
+        "Hybrid Tool Markup Link"
+      ],
+      "correctAnswer": "Hyper Text Markup Language",
+      "correctIndex": 0,
+      "explanation": "HTML, web sayfasının yapısını tanımlayan işaretleme dilidir.",
+      "sourceTerms": [
+        "HTML"
+      ],
+      "sourceReferences": [
+        "mdn_web_docs"
+      ],
+      "roadmapTriggerIfWrong": "Web Geliştirme (Full-Stack) Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-042"
+    },
+    {
+      "category": "Web Geliştirme (Full-Stack)",
+      "subTopic": "Web Geliştirme (Full-Stack)",
+      "questionType": "en_to_tr",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"HTTP\" açılımı nedir?",
+      "options": [
+        "Hyper Text Transfer Protocol",
+        "High Type Transfer Program",
+        "Host Transfer Text Process",
+        "Hybrid Transmission Protocol"
+      ],
+      "correctAnswer": "Hyper Text Transfer Protocol",
+      "correctIndex": 0,
+      "explanation": "HTTP, web istemcisi ve sunucusu arasında veri aktarımı için kullanılan protokoldür.",
+      "sourceTerms": [
+        "HTTP"
+      ],
+      "sourceReferences": [
+        "mdn_web_docs"
+      ],
+      "roadmapTriggerIfWrong": "Web Geliştirme (Full-Stack) Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-043"
+    },
+    {
+      "category": "Web Geliştirme (Full-Stack)",
+      "subTopic": "Web Geliştirme (Full-Stack)",
+      "questionType": "definition",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "İnternette bir kaynağın adresini gösteren terim hangisidir?",
+      "options": [
+        "URL",
+        "RAM",
+        "CPU",
+        "DPI"
+      ],
+      "correctAnswer": "URL",
+      "correctIndex": 0,
+      "explanation": "URL, web üzerindeki bir kaynağın adresini belirtir.",
+      "sourceTerms": [
+        "URL"
+      ],
+      "sourceReferences": [
+        "mdn_web_docs"
+      ],
+      "roadmapTriggerIfWrong": "Web Geliştirme (Full-Stack) Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-044"
+    },
+    {
+      "category": "Web Geliştirme (Full-Stack)",
+      "subTopic": "Web Geliştirme (Full-Stack)",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Geliştiricilerin karmaşık işlevlere daha kolay erişmesi için sunulan arayüz yapısı hangi terimdir?",
+      "options": [
+        "API",
+        "CPU",
+        "BIOS",
+        "JPEG"
+      ],
+      "correctAnswer": "API",
+      "correctIndex": 0,
+      "explanation": "API, uygulamaların veya servislerin işlevlerine belirli kurallarla erişmeyi sağlayan arayüzdür.",
+      "sourceTerms": [
+        "API"
+      ],
+      "sourceReferences": [
+        "mdn_web_docs"
+      ],
+      "roadmapTriggerIfWrong": "Web Geliştirme (Full-Stack) Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-045"
+    },
+    {
+      "category": "Web Geliştirme (Full-Stack)",
+      "subTopic": "Web Geliştirme (Full-Stack)",
+      "questionType": "definition",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "Dağıtık sistemlerde kaynakların standart istemci/sunucu etkileşimiyle aktarılmasını temel alan mimari stil hangisidir?",
+      "options": [
+        "REST",
+        "ROM",
+        "DPI",
+        "LAN"
+      ],
+      "correctAnswer": "REST",
+      "correctIndex": 0,
+      "explanation": "REST, web servislerinde kaynak tabanlı ve ölçeklenebilir istemci/sunucu etkileşimini tanımlayan mimari yaklaşımdır.",
+      "sourceTerms": [
+        "REST"
+      ],
+      "sourceReferences": [
+        "mdn_web_docs"
+      ],
+      "roadmapTriggerIfWrong": "Web Geliştirme (Full-Stack) Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-046"
+    },
+    {
+      "category": "Web Geliştirme (Full-Stack)",
+      "subTopic": "Web Geliştirme (Full-Stack)",
+      "questionType": "en_to_tr",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"Server-side rendering (SSR)\" Türkçede hangi anlama gelir?",
+      "options": [
+        "Sunucu tarafında HTML oluşturma",
+        "İstemci tarafında şifreleme",
+        "Veri madenciliği",
+        "Ekran parlaklığı ayarı"
+      ],
+      "correctAnswer": "Sunucu tarafında HTML oluşturma",
+      "correctIndex": 0,
+      "explanation": "SSR, HTML içeriğinin sunucuda oluşturulup istemciye gönderilmesidir.",
+      "sourceTerms": [
+        "SSR",
+        "server-side rendering"
+      ],
+      "sourceReferences": [
+        "mdn_web_docs"
+      ],
+      "roadmapTriggerIfWrong": "Web Geliştirme (Full-Stack) Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-047"
+    },
+    {
+      "category": "Web Geliştirme (Full-Stack)",
+      "subTopic": "Web Geliştirme (Full-Stack)",
+      "questionType": "scenario",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Bir web uygulaması, kullanıcıdan gelen isteğe göre veri tabanından ürünleri filtreleyip getiriyor. Bu işlem hangi terimle ilişkilidir?",
+      "options": [
+        "Query",
+        "Pixel",
+        "Virus",
+        "Joystick"
+      ],
+      "correctAnswer": "Query",
+      "correctIndex": 0,
+      "explanation": "Query, veri tabanından belirli koşullara göre veri getirme talebidir.",
+      "sourceTerms": [
+        "query"
+      ],
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "mdn_web_docs"
+      ],
+      "roadmapTriggerIfWrong": "Web Geliştirme (Full-Stack) Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-048"
+    },
+    {
+      "category": "Web Geliştirme (Full-Stack)",
+      "subTopic": "Web Geliştirme (Full-Stack)",
+      "questionType": "en_to_tr",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"Source code\" Türkçede ne anlama gelir?",
+      "options": [
+        "Kaynak kod",
+        "Güvenlik kodu",
+        "Makine donanımı",
+        "İletim kanalı"
+      ],
+      "correctAnswer": "Kaynak kod",
+      "correctIndex": 0,
+      "explanation": "Source code, geliştiricinin yazdığı program kodudur.",
+      "sourceTerms": [
+        "source code"
+      ],
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "mdn_web_docs"
+      ],
+      "roadmapTriggerIfWrong": "Web Geliştirme (Full-Stack) Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-049"
+    },
+    {
+      "category": "Web Geliştirme (Full-Stack)",
+      "subTopic": "Web Geliştirme (Full-Stack)",
+      "questionType": "scenario",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "Bir geliştirici, form gönderiminde oluşan hatayı bulup düzeltiyor. Bu işlem hangi teknik terimle ifade edilir?",
+      "options": [
+        "Debug",
+        "Download",
+        "Spooling",
+        "Scaling"
+      ],
+      "correctAnswer": "Debug",
+      "correctIndex": 0,
+      "explanation": "Debug, yazılım hatalarını bulma ve giderme sürecidir.",
+      "sourceTerms": [
+        "debug"
+      ],
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "mdn_web_docs"
+      ],
+      "roadmapTriggerIfWrong": "Web Geliştirme (Full-Stack) Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-050"
+    },
+    {
+      "category": "Oyun Geliştirme ve Grafik Programlama",
+      "subTopic": "Oyun Geliştirme ve Grafik Programlama",
+      "questionType": "en_to_tr",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Game Programming\" teriminin Türkçe karşılığı nedir?",
+      "options": [
+        "Oyun programlama",
+        "Web tasarımı",
+        "Bilişim hukuku",
+        "Veri mühendisliği"
+      ],
+      "correctAnswer": "Oyun programlama",
+      "correctIndex": 0,
+      "explanation": "Game Programming, oyun sistemlerini, mekanikleri ve etkileşimleri kodlama alanıdır.",
+      "sourceTerms": [
+        "game programming"
+      ],
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "unity_docs"
+      ],
+      "roadmapTriggerIfWrong": "Oyun Geliştirme ve Grafik Programlama Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-051"
+    },
+    {
+      "category": "Oyun Geliştirme ve Grafik Programlama",
+      "subTopic": "Oyun Geliştirme ve Grafik Programlama",
+      "questionType": "en_to_tr",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Computer Graphics\" Türkçede ne anlama gelir?",
+      "options": [
+        "Bilgisayar grafiği",
+        "Bilgisayar ağı",
+        "Bilgisayar destekli tasarım",
+        "Veri tabanı"
+      ],
+      "correctAnswer": "Bilgisayar grafiği",
+      "correctIndex": 0,
+      "explanation": "Computer Graphics, bilgisayarla görüntü üretme ve işleme tekniklerini kapsar.",
+      "sourceTerms": [
+        "computer graphics"
+      ],
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "unity_docs"
+      ],
+      "roadmapTriggerIfWrong": "Oyun Geliştirme ve Grafik Programlama Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-052"
+    },
+    {
+      "category": "Oyun Geliştirme ve Grafik Programlama",
+      "subTopic": "Oyun Geliştirme ve Grafik Programlama",
+      "questionType": "definition",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "Bir görüntünün en küçük iki boyutlu elemanını ifade eden terim hangisidir?",
+      "options": [
+        "Pixel",
+        "Port",
+        "Node",
+        "Sector"
+      ],
+      "correctAnswer": "Pixel",
+      "correctIndex": 0,
+      "explanation": "Pixel, görüntünün renk ve parlaklık bilgisi taşıyan en küçük elemanıdır.",
+      "sourceTerms": [
+        "pixel"
+      ],
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "unity_docs"
+      ],
+      "roadmapTriggerIfWrong": "Oyun Geliştirme ve Grafik Programlama Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-053"
+    },
+    {
+      "category": "Oyun Geliştirme ve Grafik Programlama",
+      "subTopic": "Oyun Geliştirme ve Grafik Programlama",
+      "questionType": "en_to_tr",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"Rendering\" teriminin Türkçe karşılığı nedir?",
+      "options": [
+        "Görüntü oluşturma / render alma",
+        "Veri iletimi",
+        "Şifre çözümleme",
+        "Sistemden çıkış"
+      ],
+      "correctAnswer": "Görüntü oluşturma / render alma",
+      "correctIndex": 0,
+      "explanation": "Rendering, sahne verilerinin ekranda görüntüye dönüştürülmesi işlemidir.",
+      "sourceTerms": [
+        "rendering"
+      ],
+      "sourceReferences": [
+        "unity_docs"
+      ],
+      "roadmapTriggerIfWrong": "Oyun Geliştirme ve Grafik Programlama Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-054"
+    },
+    {
+      "category": "Oyun Geliştirme ve Grafik Programlama",
+      "subTopic": "Oyun Geliştirme ve Grafik Programlama",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "GPU üzerinde çalışan ve yüzeyin nasıl görüneceğini belirleyen program türü hangisidir?",
+      "options": [
+        "Shader",
+        "Router",
+        "Query",
+        "Firewall"
+      ],
+      "correctAnswer": "Shader",
+      "correctIndex": 0,
+      "explanation": "Shader, grafik işlemcide çalışan ve ışık, renk, yüzey gibi görsel çıktıları belirleyen programdır.",
+      "sourceTerms": [
+        "shader"
+      ],
+      "sourceReferences": [
+        "unity_docs"
+      ],
+      "roadmapTriggerIfWrong": "Oyun Geliştirme ve Grafik Programlama Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-055"
+    },
+    {
+      "category": "Oyun Geliştirme ve Grafik Programlama",
+      "subTopic": "Oyun Geliştirme ve Grafik Programlama",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Bir yüzeyin nasıl çizileceğini; renk, doku ve shader ayarlarıyla tanımlayan kavram hangisidir?",
+      "options": [
+        "Material",
+        "Manifest",
+        "Middleware",
+        "Microcode"
+      ],
+      "correctAnswer": "Material",
+      "correctIndex": 0,
+      "explanation": "Material, oyun motorlarında bir yüzeyin nasıl görüneceğini belirleyen ayarlar bütünüdür.",
+      "sourceTerms": [
+        "material"
+      ],
+      "sourceReferences": [
+        "unity_docs"
+      ],
+      "roadmapTriggerIfWrong": "Oyun Geliştirme ve Grafik Programlama Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-056"
+    },
+    {
+      "category": "Oyun Geliştirme ve Grafik Programlama",
+      "subTopic": "Oyun Geliştirme ve Grafik Programlama",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "3D modelin yüzeyine kaplanan görsel veri hangi terimle ifade edilir?",
+      "options": [
+        "Texture",
+        "Template",
+        "Terminal",
+        "Trace"
+      ],
+      "correctAnswer": "Texture",
+      "correctIndex": 0,
+      "explanation": "Texture, 3D nesnelerin yüzeyine uygulanan görsel/doku bilgisidir.",
+      "sourceTerms": [
+        "texture"
+      ],
+      "sourceReferences": [
+        "unity_docs"
+      ],
+      "roadmapTriggerIfWrong": "Oyun Geliştirme ve Grafik Programlama Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-057"
+    },
+    {
+      "category": "Oyun Geliştirme ve Grafik Programlama",
+      "subTopic": "Oyun Geliştirme ve Grafik Programlama",
+      "questionType": "scenario",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Bir oyunda karakterin boyutu tüm eksenlerde orantılı olarak büyütülüyor. Bu işlem hangi terimdir?",
+      "options": [
+        "Scaling",
+        "Spooling",
+        "Searching",
+        "Submission"
+      ],
+      "correctAnswer": "Scaling",
+      "correctIndex": 0,
+      "explanation": "Scaling, nesnenin boyutunun orantılı büyütülmesi veya küçültülmesidir.",
+      "sourceTerms": [
+        "scaling"
+      ],
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "unity_docs"
+      ],
+      "roadmapTriggerIfWrong": "Oyun Geliştirme ve Grafik Programlama Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-058"
+    },
+    {
+      "category": "Oyun Geliştirme ve Grafik Programlama",
+      "subTopic": "Oyun Geliştirme ve Grafik Programlama",
+      "questionType": "en_to_tr",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"Simulation\" Türkçede ne anlama gelir?",
+      "options": [
+        "Benzetim / simülasyon",
+        "Yedekleme",
+        "Sorgulama",
+        "Kullanıcı kimliği"
+      ],
+      "correctAnswer": "Benzetim / simülasyon",
+      "correctIndex": 0,
+      "explanation": "Simulation, gerçek veya soyut bir sistemin bilgisayar ortamında temsil edilmesidir.",
+      "sourceTerms": [
+        "simulation"
+      ],
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "unity_docs"
+      ],
+      "roadmapTriggerIfWrong": "Oyun Geliştirme ve Grafik Programlama Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-059"
+    },
+    {
+      "category": "Oyun Geliştirme ve Grafik Programlama",
+      "subTopic": "Oyun Geliştirme ve Grafik Programlama",
+      "questionType": "scenario",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "Bir oyuncu, oyun içindeki karakteri fiziksel bir kol ile yönlendiriyor. Bu cihaz hangi terimle ifade edilir?",
+      "options": [
+        "Joystick",
+        "Gateway",
+        "Scanner",
+        "Server"
+      ],
+      "correctAnswer": "Joystick",
+      "correctIndex": 0,
+      "explanation": "Joystick, oyunlarda yönlendirme için kullanılan kontrol cihazıdır.",
+      "sourceTerms": [
+        "joystick"
+      ],
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "unity_docs"
+      ],
+      "roadmapTriggerIfWrong": "Oyun Geliştirme ve Grafik Programlama Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-060"
+    },
+    {
+      "id": "TEQ-061",
+      "category": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti)",
+      "questionType": "en_to_tr",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Embedded Systems\" Türkçede ne anlama gelir?",
+      "options": [
+        "Gömülü sistemler",
+        "Veri madenciliği",
+        "Bilişim hukuku",
+        "Web tasarımı"
+      ],
+      "correctAnswer": "Gömülü sistemler",
+      "correctIndex": 0,
+      "explanation": "Embedded Systems, belirli görevleri yerine getiren donanım-yazılım bütünleşik sistemlerdir.",
+      "sourceTerms": [
+        "embedded systems"
+      ],
+      "roadmapTriggerIfWrong": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti) Teknik İngilizce Öğrenimi",
+      "subTopic": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti)",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_priority_areas",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-062",
+      "category": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti)",
+      "questionType": "en_to_tr",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Internet of Things (IoT)\" teriminin Türkçe karşılığı nedir?",
+      "options": [
+        "Nesnelerin interneti",
+        "Bilgisayar grafiği",
+        "Makine kodu",
+        "Masaüstü yayıncılık"
+      ],
+      "correctAnswer": "Nesnelerin interneti",
+      "correctIndex": 0,
+      "explanation": "IoT, fiziksel cihazların veri toplayıp internet üzerinden haberleşmesini ifade eder.",
+      "sourceTerms": [
+        "Internet of Things",
+        "IoT"
+      ],
+      "roadmapTriggerIfWrong": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti) Teknik İngilizce Öğrenimi",
+      "subTopic": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti)",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_priority_areas",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-063",
+      "category": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti)",
+      "questionType": "tr_to_en",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Akıllı cihazlar\" İngilizcede nasıl ifade edilir?",
+      "options": [
+        "Smart devices",
+        "Smart cities",
+        "Smart homes",
+        "Smart contracts"
+      ],
+      "correctAnswer": "Smart devices",
+      "correctIndex": 0,
+      "explanation": "Smart devices, veri toplayabilen ve bağlantılı çalışabilen akıllı donanımlardır.",
+      "sourceTerms": [
+        "smart devices"
+      ],
+      "roadmapTriggerIfWrong": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti) Teknik İngilizce Öğrenimi",
+      "subTopic": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti)",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_priority_areas",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-064",
+      "category": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti)",
+      "questionType": "scenario",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Bir sensör sıcaklık verisini ölçüp buluta gönderiyor. Bu işlem IoT tarafında hangi ifadeyle ilişkilidir?",
+      "options": [
+        "Collect data",
+        "Cut and paste",
+        "Read-only memory",
+        "Landscape format"
+      ],
+      "correctAnswer": "Collect data",
+      "correctIndex": 0,
+      "explanation": "Collect data, cihazların ortamdan veri toplamasını ifade eder.",
+      "sourceTerms": [
+        "collect data"
+      ],
+      "roadmapTriggerIfWrong": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti) Teknik İngilizce Öğrenimi",
+      "subTopic": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti)",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_priority_areas",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-065",
+      "category": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti)",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "IoT cihazlarının birbirleriyle veri alışverişi yapmasını anlatan ifade hangisidir?",
+      "options": [
+        "Exchange data",
+        "Erase data",
+        "Data bank",
+        "Data type"
+      ],
+      "correctAnswer": "Exchange data",
+      "correctIndex": 0,
+      "explanation": "Exchange data, cihazlar arasında veri değişimini ifade eder.",
+      "sourceTerms": [
+        "exchange data"
+      ],
+      "roadmapTriggerIfWrong": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti) Teknik İngilizce Öğrenimi",
+      "subTopic": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti)",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_priority_areas",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-066",
+      "category": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti)",
+      "questionType": "en_to_tr",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"Microcontroller Applications\" Türkçede hangi anlama gelir?",
+      "options": [
+        "Mikrodenetleyici uygulamaları",
+        "Mikro kod birleştirici",
+        "Manyetik kart",
+        "Makro dili"
+      ],
+      "correctAnswer": "Mikrodenetleyici uygulamaları",
+      "correctIndex": 0,
+      "explanation": "Microcontroller Applications, küçük denetleyicilerle çalışan sistem uygulamalarıdır.",
+      "sourceTerms": [
+        "microcontroller applications"
+      ],
+      "roadmapTriggerIfWrong": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti) Teknik İngilizce Öğrenimi",
+      "subTopic": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti)",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_priority_areas",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-067",
+      "category": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti)",
+      "questionType": "term_field",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"Industrial Internet of Things (IIoT)\" en çok hangi alana aittir?",
+      "options": [
+        "Gömülü Sistemler ve IoT",
+        "Web Geliştirme",
+        "Dijital Adli Bilişim",
+        "Oyun Geliştirme"
+      ],
+      "correctAnswer": "Gömülü Sistemler ve IoT",
+      "correctIndex": 0,
+      "explanation": "IIoT, endüstriyel cihazların ağ üzerinden veri paylaşmasını kapsar.",
+      "sourceTerms": [
+        "IIoT"
+      ],
+      "roadmapTriggerIfWrong": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti) Teknik İngilizce Öğrenimi",
+      "subTopic": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti)",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_priority_areas",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-068",
+      "category": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti)",
+      "questionType": "en_to_tr",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"Smart homes\" Türkçede ne anlama gelir?",
+      "options": [
+        "Akıllı evler",
+        "Akıllı şehirler",
+        "Güvenlik kültürü",
+        "Veri bütünlüğü"
+      ],
+      "correctAnswer": "Akıllı evler",
+      "correctIndex": 0,
+      "explanation": "Smart homes, bağlantılı cihazlarla yönetilebilen ev sistemlerini ifade eder.",
+      "sourceTerms": [
+        "smart homes"
+      ],
+      "roadmapTriggerIfWrong": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti) Teknik İngilizce Öğrenimi",
+      "subTopic": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti)",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_priority_areas",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-069",
+      "category": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti)",
+      "questionType": "scenario",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "IoT sisteminde cihazların güvenlik riskleri değerlendirilip önlem planlanıyor. Bu süreç hangi terimle ilişkilidir?",
+      "options": [
+        "Risk management",
+        "Page break",
+        "Text editor",
+        "Image recognition"
+      ],
+      "correctAnswer": "Risk management",
+      "correctIndex": 0,
+      "explanation": "Risk management, sistemdeki riskleri analiz edip yönetme sürecidir.",
+      "sourceTerms": [
+        "risk management"
+      ],
+      "roadmapTriggerIfWrong": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti) Teknik İngilizce Öğrenimi",
+      "subTopic": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti)",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_priority_areas",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-070",
+      "category": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti)",
+      "questionType": "definition",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "Fiziksel nesneler ile dijital sistemlerin birlikte çalıştığı yapı hangi İngilizce terimle ifade edilir?",
+      "options": [
+        "Cyber-physical system",
+        "Personal computer",
+        "Portable document format",
+        "Database language"
+      ],
+      "correctAnswer": "Cyber-physical system",
+      "correctIndex": 0,
+      "explanation": "Cyber-physical system, fiziksel süreçler ile yazılım/iletişim altyapısının bütünleştiği sistemdir.",
+      "sourceTerms": [
+        "cyber-physical system"
+      ],
+      "roadmapTriggerIfWrong": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti) Teknik İngilizce Öğrenimi",
+      "subTopic": "Gömülü Sistemler ve IoT (Nesnelerin İnterneti)",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_priority_areas",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-071",
+      "category": "Robotik ve Otomasyon",
+      "questionType": "en_to_tr",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Robotics\" teriminin Türkçe karşılığı nedir?",
+      "options": [
+        "Robotbilim / robotik",
+        "Veri tabanı",
+        "Ağ teknolojileri",
+        "Bilişim hukuku"
+      ],
+      "correctAnswer": "Robotbilim / robotik",
+      "correctIndex": 0,
+      "explanation": "Robotics, robotların tasarlanması, üretilmesi ve kullanılmasını kapsayan alandır.",
+      "sourceTerms": [
+        "robotics"
+      ],
+      "roadmapTriggerIfWrong": "Robotik ve Otomasyon Teknik İngilizce Öğrenimi",
+      "subTopic": "Robotik ve Otomasyon",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "unity_docs",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-072",
+      "category": "Robotik ve Otomasyon",
+      "questionType": "en_to_tr",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Robot\" teknik olarak neyi ifade eder?",
+      "options": [
+        "Programlanabilir mekanik aygıt",
+        "Sadece yazı düzenleyici",
+        "Veri tabanı dili",
+        "Görüntü dosyası"
+      ],
+      "correctAnswer": "Programlanabilir mekanik aygıt",
+      "correctIndex": 0,
+      "explanation": "Robot, otomatik kontrol altında hareket veya manipülasyon yapan mekanik aygıttır.",
+      "sourceTerms": [
+        "robot"
+      ],
+      "roadmapTriggerIfWrong": "Robotik ve Otomasyon Teknik İngilizce Öğrenimi",
+      "subTopic": "Robotik ve Otomasyon",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "unity_docs",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-073",
+      "category": "Robotik ve Otomasyon",
+      "questionType": "tr_to_en",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"Otonom üretim\" İngilizcede nasıl ifade edilir?",
+      "options": [
+        "Autonomous production",
+        "Augmented reality",
+        "Advanced data processing",
+        "Availability of data"
+      ],
+      "correctAnswer": "Autonomous production",
+      "correctIndex": 0,
+      "explanation": "Autonomous production, üretim süreçlerinin insan müdahalesi azalarak otomatikleşmesini ifade eder.",
+      "sourceTerms": [
+        "autonomous production"
+      ],
+      "roadmapTriggerIfWrong": "Robotik ve Otomasyon Teknik İngilizce Öğrenimi",
+      "subTopic": "Robotik ve Otomasyon",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "unity_docs",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-074",
+      "category": "Robotik ve Otomasyon",
+      "questionType": "en_to_tr",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"Robot assisted production\" Türkçede hangi anlama gelir?",
+      "options": [
+        "Robot destekli üretim",
+        "Robotik veri şifreleme",
+        "Akıllı ev",
+        "Veri giriş işlemi"
+      ],
+      "correctAnswer": "Robot destekli üretim",
+      "correctIndex": 0,
+      "explanation": "Robot assisted production, üretimde robotların destekleyici olarak kullanılmasıdır.",
+      "sourceTerms": [
+        "robot assisted production"
+      ],
+      "roadmapTriggerIfWrong": "Robotik ve Otomasyon Teknik İngilizce Öğrenimi",
+      "subTopic": "Robotik ve Otomasyon",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "unity_docs",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-075",
+      "category": "Robotik ve Otomasyon",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Bir üretim hattının bilgisayar ortamında taklit edilmesi hangi terimle ifade edilir?",
+      "options": [
+        "Production line simulation",
+        "File protection",
+        "Network routing",
+        "Speech recognition"
+      ],
+      "correctAnswer": "Production line simulation",
+      "correctIndex": 0,
+      "explanation": "Production line simulation, üretim hattının simülasyonla modellenmesidir.",
+      "sourceTerms": [
+        "production line simulation"
+      ],
+      "roadmapTriggerIfWrong": "Robotik ve Otomasyon Teknik İngilizce Öğrenimi",
+      "subTopic": "Robotik ve Otomasyon",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "unity_docs",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-076",
+      "category": "Robotik ve Otomasyon",
+      "questionType": "scenario",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Bir robot kolu, sensörlerden gelen bilgiye göre hareket kararını otomatik veriyor. Bu durum en çok hangi kavramla ilişkilidir?",
+      "options": [
+        "Automation",
+        "Text editing",
+        "File download",
+        "Web browsing"
+      ],
+      "correctAnswer": "Automation",
+      "correctIndex": 0,
+      "explanation": "Automation, süreçlerin insan müdahalesi olmadan çalıştırılmasını ifade eder.",
+      "sourceTerms": [
+        "automation"
+      ],
+      "roadmapTriggerIfWrong": "Robotik ve Otomasyon Teknik İngilizce Öğrenimi",
+      "subTopic": "Robotik ve Otomasyon",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "unity_docs",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-077",
+      "category": "Robotik ve Otomasyon",
+      "questionType": "en_to_tr",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"System integration\" Türkçede ne anlama gelir?",
+      "options": [
+        "Sistem bütünleşmesi",
+        "Dosya sıkıştırma",
+        "Arayüz kaydırma",
+        "Veri silme"
+      ],
+      "correctAnswer": "Sistem bütünleşmesi",
+      "correctIndex": 0,
+      "explanation": "System integration, farklı sistem parçalarının birlikte çalışacak şekilde birleştirilmesidir.",
+      "sourceTerms": [
+        "system integration"
+      ],
+      "roadmapTriggerIfWrong": "Robotik ve Otomasyon Teknik İngilizce Öğrenimi",
+      "subTopic": "Robotik ve Otomasyon",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "unity_docs",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-078",
+      "category": "Robotik ve Otomasyon",
+      "questionType": "term_field",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"Digital Control Systems\" hangi alanla daha yakından ilişkilidir?",
+      "options": [
+        "Robotik ve Otomasyon",
+        "E-ticaret",
+        "Web Tasarımı",
+        "Sosyal Medya"
+      ],
+      "correctAnswer": "Robotik ve Otomasyon",
+      "correctIndex": 0,
+      "explanation": "Digital Control Systems, otomasyon ve kontrol sistemlerinin temel ders/alanlarından biridir.",
+      "sourceTerms": [
+        "digital control systems"
+      ],
+      "roadmapTriggerIfWrong": "Robotik ve Otomasyon Teknik İngilizce Öğrenimi",
+      "subTopic": "Robotik ve Otomasyon",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "unity_docs",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-079",
+      "category": "Robotik ve Otomasyon",
+      "questionType": "definition",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "Bir robotun çevresindeki fiziksel nesneleri algılayıp bunlara göre hareket etmesi hangi ifade ile ilişkilidir?",
+      "options": [
+        "Physical objects",
+        "Document format",
+        "Top-level domain",
+        "Text processor"
+      ],
+      "correctAnswer": "Physical objects",
+      "correctIndex": 0,
+      "explanation": "Physical objects, robotik ve siber-fiziksel sistemlerde etkileşime girilen gerçek nesnelerdir.",
+      "sourceTerms": [
+        "physical objects"
+      ],
+      "roadmapTriggerIfWrong": "Robotik ve Otomasyon Teknik İngilizce Öğrenimi",
+      "subTopic": "Robotik ve Otomasyon",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "unity_docs",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-080",
+      "category": "Robotik ve Otomasyon",
+      "questionType": "scenario",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "Bir fabrika, makineleri, robotları ve yazılımları tek bir otomatik üretim sistemi altında birleştiriyor. Bu yaklaşımı en iyi anlatan terim hangisidir?",
+      "options": [
+        "System integration",
+        "Word count",
+        "Raster unit",
+        "Default format"
+      ],
+      "correctAnswer": "System integration",
+      "correctIndex": 0,
+      "explanation": "System integration, farklı donanım ve yazılım bileşenlerini tek sistem gibi çalıştırma yaklaşımıdır.",
+      "sourceTerms": [
+        "system integration"
+      ],
+      "roadmapTriggerIfWrong": "Robotik ve Otomasyon Teknik İngilizce Öğrenimi",
+      "subTopic": "Robotik ve Otomasyon",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "unity_docs",
+        "nist_csrc"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "category": "Bulut Bilişim ve DevOps",
+      "subTopic": "Bulut Bilişim ve DevOps",
+      "questionType": "en_to_tr",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Cloud Computing\" Türkçede ne anlama gelir?",
+      "options": [
+        "Bulut bilişim",
+        "Bilgisayar grafiği",
+        "Sanal gerçeklik",
+        "Veri yolu ağı"
+      ],
+      "correctAnswer": "Bulut bilişim",
+      "correctIndex": 0,
+      "explanation": "Cloud Computing, bilişim kaynaklarının internet üzerinden sunulmasıdır.",
+      "sourceTerms": [
+        "cloud computing"
+      ],
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "kubernetes_docs"
+      ],
+      "roadmapTriggerIfWrong": "Bulut Bilişim ve DevOps Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-081"
+    },
+    {
+      "category": "Bulut Bilişim ve DevOps",
+      "subTopic": "Bulut Bilişim ve DevOps",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Uygulama ve bağımlılıklarını izole paket halinde çalıştırmaya yarayan yapı hangi terimdir?",
+      "options": [
+        "Container",
+        "Pixel",
+        "Router",
+        "Fragment"
+      ],
+      "correctAnswer": "Container",
+      "correctIndex": 0,
+      "explanation": "Container, uygulamayı bağımlılıklarıyla birlikte taşınabilir ve izole şekilde çalıştırır.",
+      "sourceTerms": [
+        "container"
+      ],
+      "sourceReferences": [
+        "kubernetes_docs"
+      ],
+      "roadmapTriggerIfWrong": "Bulut Bilişim ve DevOps Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-082"
+    },
+    {
+      "category": "Bulut Bilişim ve DevOps",
+      "subTopic": "Bulut Bilişim ve DevOps",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Kubernetes’te bir veya daha fazla container çalıştırabilen en küçük dağıtım birimi hangisidir?",
+      "options": [
+        "Pod",
+        "Port",
+        "Pointer",
+        "Prompt"
+      ],
+      "correctAnswer": "Pod",
+      "correctIndex": 0,
+      "explanation": "Pod, Kubernetes’te container çalıştıran en küçük temel iş yükü birimidir.",
+      "sourceTerms": [
+        "pod"
+      ],
+      "sourceReferences": [
+        "kubernetes_docs"
+      ],
+      "roadmapTriggerIfWrong": "Bulut Bilişim ve DevOps Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-083"
+    },
+    {
+      "category": "Bulut Bilişim ve DevOps",
+      "subTopic": "Bulut Bilişim ve DevOps",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Kubernetes’te pod’lara kararlı ağ erişimi sağlayan soyutlama hangisidir?",
+      "options": [
+        "Service",
+        "Shader",
+        "Sector",
+        "Scanner"
+      ],
+      "correctAnswer": "Service",
+      "correctIndex": 0,
+      "explanation": "Service, pod’lara kararlı erişim ve yük dengeleme sağlayan Kubernetes soyutlamasıdır.",
+      "sourceTerms": [
+        "service"
+      ],
+      "sourceReferences": [
+        "kubernetes_docs"
+      ],
+      "roadmapTriggerIfWrong": "Bulut Bilişim ve DevOps Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-084"
+    },
+    {
+      "category": "Bulut Bilişim ve DevOps",
+      "subTopic": "Bulut Bilişim ve DevOps",
+      "questionType": "scenario",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Bir ekip uygulamanın yeni sürümünü kümeye kontrollü biçimde yayıyor. Bu işlem hangi terimle ilişkilidir?",
+      "options": [
+        "Deployment",
+        "Dialog box",
+        "Digital signature",
+        "Data bank"
+      ],
+      "correctAnswer": "Deployment",
+      "correctIndex": 0,
+      "explanation": "Deployment, uygulama sürümünün çalışma ortamına dağıtılması/yayına alınmasıdır.",
+      "sourceTerms": [
+        "deployment"
+      ],
+      "sourceReferences": [
+        "kubernetes_docs"
+      ],
+      "roadmapTriggerIfWrong": "Bulut Bilişim ve DevOps Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-085"
+    },
+    {
+      "category": "Bulut Bilişim ve DevOps",
+      "subTopic": "Bulut Bilişim ve DevOps",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Bir sistemde seçilen etkinlikleri analiz amacıyla gözleyen ve kaydeden kavram hangisidir?",
+      "options": [
+        "Monitoring",
+        "Rendering",
+        "Browsing",
+        "Justify"
+      ],
+      "correctAnswer": "Monitoring",
+      "correctIndex": 0,
+      "explanation": "Monitoring, sistem davranışını izleme ve kayıt altına alma sürecidir.",
+      "sourceTerms": [
+        "monitoring"
+      ],
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "kubernetes_docs"
+      ],
+      "roadmapTriggerIfWrong": "Bulut Bilişim ve DevOps Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-086"
+    },
+    {
+      "category": "Bulut Bilişim ve DevOps",
+      "subTopic": "Bulut Bilişim ve DevOps",
+      "questionType": "definition",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "Kubernetes kümesinde karar verme ve yönetim bileşenlerini barındıran katman hangisidir?",
+      "options": [
+        "Control plane",
+        "Clipboard",
+        "Gray scale",
+        "Macro language"
+      ],
+      "correctAnswer": "Control plane",
+      "correctIndex": 0,
+      "explanation": "Control plane, Kubernetes kümesini yöneten ana kontrol bileşenlerini ifade eder.",
+      "sourceTerms": [
+        "control plane"
+      ],
+      "sourceReferences": [
+        "kubernetes_docs"
+      ],
+      "roadmapTriggerIfWrong": "Bulut Bilişim ve DevOps Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-087"
+    },
+    {
+      "category": "Bulut Bilişim ve DevOps",
+      "subTopic": "Bulut Bilişim ve DevOps",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Bir arızadan sonra sistemin normal işleyişine dönme yeteneği hangi terimle ifade edilir?",
+      "options": [
+        "Recovery function",
+        "Raster graphics",
+        "Read head",
+        "Speech template"
+      ],
+      "correctAnswer": "Recovery function",
+      "correctIndex": 0,
+      "explanation": "Recovery function, sistemin arızadan sonra normal işleyişe geri dönme yeteneğidir.",
+      "sourceTerms": [
+        "recovery function"
+      ],
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "kubernetes_docs"
+      ],
+      "roadmapTriggerIfWrong": "Bulut Bilişim ve DevOps Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-088"
+    },
+    {
+      "category": "Bulut Bilişim ve DevOps",
+      "subTopic": "Bulut Bilişim ve DevOps",
+      "questionType": "term_field",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"File server\" en çok hangi alanda kullanılan bir terimdir?",
+      "options": [
+        "Bulut Bilişim ve DevOps",
+        "Oyun Geliştirme",
+        "VR/AR",
+        "Biyobilişim"
+      ],
+      "correctAnswer": "Bulut Bilişim ve DevOps",
+      "correctIndex": 0,
+      "explanation": "File server, dosya erişimi ve paylaşımı sağlayan sunucu türüdür.",
+      "sourceTerms": [
+        "file server"
+      ],
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "kubernetes_docs"
+      ],
+      "roadmapTriggerIfWrong": "Bulut Bilişim ve DevOps Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-089"
+    },
+    {
+      "category": "Bulut Bilişim ve DevOps",
+      "subTopic": "Bulut Bilişim ve DevOps",
+      "questionType": "definition",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "Sistemin istenen hizmeti vermeyi durdurması hangi İngilizce terimle ifade edilir?",
+      "options": [
+        "Failure",
+        "Font",
+        "Frame",
+        "Field"
+      ],
+      "correctAnswer": "Failure",
+      "correctIndex": 0,
+      "explanation": "Failure, sistemin beklenen işlevi yerine getirme yeteneğini kaybetmesidir.",
+      "sourceTerms": [
+        "failure"
+      ],
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "kubernetes_docs"
+      ],
+      "roadmapTriggerIfWrong": "Bulut Bilişim ve DevOps Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-090"
+    },
+    {
+      "id": "TEQ-091",
+      "category": "Yazılım Mimarisi ve Proje Yönetimi",
+      "questionType": "en_to_tr",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Software Engineering\" Türkçede ne anlama gelir?",
+      "options": [
+        "Yazılım mühendisliği",
+        "Bilgisayar ağları",
+        "Sanal gerçeklik",
+        "Kriptoloji"
+      ],
+      "correctAnswer": "Yazılım mühendisliği",
+      "correctIndex": 0,
+      "explanation": "Software Engineering, yazılımın planlı, sistemli ve kaliteli geliştirilmesini kapsar.",
+      "sourceTerms": [
+        "software engineering"
+      ],
+      "roadmapTriggerIfWrong": "Yazılım Mimarisi ve Proje Yönetimi Teknik İngilizce Öğrenimi",
+      "subTopic": "Yazılım Mimarisi ve Proje Yönetimi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "mdn_web_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-092",
+      "category": "Yazılım Mimarisi ve Proje Yönetimi",
+      "questionType": "tr_to_en",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Proje yönetimi\" İngilizcede nasıl ifade edilir?",
+      "options": [
+        "Project Management",
+        "Pattern Recognition",
+        "Pixel Management",
+        "Password Manager"
+      ],
+      "correctAnswer": "Project Management",
+      "correctIndex": 0,
+      "explanation": "Project Management, proje planlama ve denetim faaliyetlerini kapsar.",
+      "sourceTerms": [
+        "project management"
+      ],
+      "roadmapTriggerIfWrong": "Yazılım Mimarisi ve Proje Yönetimi Teknik İngilizce Öğrenimi",
+      "subTopic": "Yazılım Mimarisi ve Proje Yönetimi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "mdn_web_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-093",
+      "category": "Yazılım Mimarisi ve Proje Yönetimi",
+      "questionType": "definition",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "Bir sistemin sağlaması gereken gerekli şartı ifade eden terim hangisidir?",
+      "options": [
+        "Requirement",
+        "Rendering",
+        "Router",
+        "Ransomware"
+      ],
+      "correctAnswer": "Requirement",
+      "correctIndex": 0,
+      "explanation": "Requirement, sistemin karşılaması beklenen gereksinimi ifade eder.",
+      "sourceTerms": [
+        "requirement"
+      ],
+      "roadmapTriggerIfWrong": "Yazılım Mimarisi ve Proje Yönetimi Teknik İngilizce Öğrenimi",
+      "subTopic": "Yazılım Mimarisi ve Proje Yönetimi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "mdn_web_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-094",
+      "category": "Yazılım Mimarisi ve Proje Yönetimi",
+      "questionType": "en_to_tr",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"Quality assurance\" Türkçede hangi anlama gelir?",
+      "options": [
+        "Kalite güvencesi",
+        "Güvenlik duvarı",
+        "Veri sıkıştırma",
+        "Ağ geçidi"
+      ],
+      "correctAnswer": "Kalite güvencesi",
+      "correctIndex": 0,
+      "explanation": "Quality assurance, yazılımın gereksinimlere uygunluğunu güvence altına alma sürecidir.",
+      "sourceTerms": [
+        "quality assurance"
+      ],
+      "roadmapTriggerIfWrong": "Yazılım Mimarisi ve Proje Yönetimi Teknik İngilizce Öğrenimi",
+      "subTopic": "Yazılım Mimarisi ve Proje Yönetimi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "mdn_web_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-095",
+      "category": "Yazılım Mimarisi ve Proje Yönetimi",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Kodların ve süreçlerin beklenen kurallara uygunluğunu kontrol etme kavramı hangisidir?",
+      "options": [
+        "Verification",
+        "Voice input",
+        "Virtual object",
+        "Video RAM"
+      ],
+      "correctAnswer": "Verification",
+      "correctIndex": 0,
+      "explanation": "Verification, ürün veya sürecin belirlenen kurallarla karşılaştırılmasıdır.",
+      "sourceTerms": [
+        "verification"
+      ],
+      "roadmapTriggerIfWrong": "Yazılım Mimarisi ve Proje Yönetimi Teknik İngilizce Öğrenimi",
+      "subTopic": "Yazılım Mimarisi ve Proje Yönetimi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "mdn_web_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-096",
+      "category": "Yazılım Mimarisi ve Proje Yönetimi",
+      "questionType": "scenario",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Bir ekip, iki farklı kod dalındaki değişiklikleri tek kod tabanında topluyor. Bu işlem hangi terimdir?",
+      "options": [
+        "Merge",
+        "Mirror",
+        "Monitor",
+        "Modem"
+      ],
+      "correctAnswer": "Merge",
+      "correctIndex": 0,
+      "explanation": "Merge, iki veya daha fazla veri/kod kümesini birleştirme işlemidir.",
+      "sourceTerms": [
+        "merge"
+      ],
+      "roadmapTriggerIfWrong": "Yazılım Mimarisi ve Proje Yönetimi Teknik İngilizce Öğrenimi",
+      "subTopic": "Yazılım Mimarisi ve Proje Yönetimi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "mdn_web_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-097",
+      "category": "Yazılım Mimarisi ve Proje Yönetimi",
+      "questionType": "en_to_tr",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"Object-oriented\" Türkçede hangi kavramla karşılanır?",
+      "options": [
+        "Nesne yönelimli",
+        "Çevrim dışı",
+        "Sayısal",
+        "Kullanıcı dostu"
+      ],
+      "correctAnswer": "Nesne yönelimli",
+      "correctIndex": 0,
+      "explanation": "Object-oriented, sınıf, nesne ve kalıtım kavramlarına dayalı yaklaşımı ifade eder.",
+      "sourceTerms": [
+        "object-oriented"
+      ],
+      "roadmapTriggerIfWrong": "Yazılım Mimarisi ve Proje Yönetimi Teknik İngilizce Öğrenimi",
+      "subTopic": "Yazılım Mimarisi ve Proje Yönetimi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "mdn_web_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-098",
+      "category": "Yazılım Mimarisi ve Proje Yönetimi",
+      "questionType": "definition",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "Bir sistemin yazılım ve donanım bileşenlerinin nasıl düzenlendiğini ifade eden terim hangisidir?",
+      "options": [
+        "Configuration",
+        "Confidentiality",
+        "Classification",
+        "Clustering"
+      ],
+      "correctAnswer": "Configuration",
+      "correctIndex": 0,
+      "explanation": "Configuration, yazılım ve donanım bileşenlerinin düzenlenme biçimidir.",
+      "sourceTerms": [
+        "configuration"
+      ],
+      "roadmapTriggerIfWrong": "Yazılım Mimarisi ve Proje Yönetimi Teknik İngilizce Öğrenimi",
+      "subTopic": "Yazılım Mimarisi ve Proje Yönetimi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "mdn_web_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-099",
+      "category": "Yazılım Mimarisi ve Proje Yönetimi",
+      "questionType": "term_field",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"Software Quality and Test\" en çok hangi alanın yol haritasında yer almalıdır?",
+      "options": [
+        "Yazılım Mimarisi ve Proje Yönetimi",
+        "Blokzincir Teknolojileri",
+        "Robotik ve Otomasyon",
+        "Sanal Gerçeklik"
+      ],
+      "correctAnswer": "Yazılım Mimarisi ve Proje Yönetimi",
+      "correctIndex": 0,
+      "explanation": "Software Quality and Test, yazılım kalitesi ve doğrulama süreçleriyle doğrudan ilişkilidir.",
+      "sourceTerms": [
+        "software quality and test"
+      ],
+      "roadmapTriggerIfWrong": "Yazılım Mimarisi ve Proje Yönetimi Teknik İngilizce Öğrenimi",
+      "subTopic": "Yazılım Mimarisi ve Proje Yönetimi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "mdn_web_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-100",
+      "category": "Yazılım Mimarisi ve Proje Yönetimi",
+      "questionType": "scenario",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "Bir yazılım mimarı, sistemin modülleri arasındaki bağlantıları ve dağıtımı planlıyor. Bu görev hangi kavramla en çok ilişkilidir?",
+      "options": [
+        "Software architecture",
+        "Word count",
+        "Baud",
+        "OCR"
+      ],
+      "correctAnswer": "Software architecture",
+      "correctIndex": 0,
+      "explanation": "Software architecture, yazılım bileşenlerinin yapısını ve ilişkilerini planlayan alandır.",
+      "sourceTerms": [
+        "software architecture"
+      ],
+      "roadmapTriggerIfWrong": "Yazılım Mimarisi ve Proje Yönetimi Teknik İngilizce Öğrenimi",
+      "subTopic": "Yazılım Mimarisi ve Proje Yönetimi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "mdn_web_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "category": "Blokzincir Teknolojileri",
+      "subTopic": "Blokzincir Teknolojileri",
+      "questionType": "en_to_tr",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Blockchain technology\" Türkçede ne anlama gelir?",
+      "options": [
+        "Blokzincir teknolojisi",
+        "Görüntü işleme",
+        "Mobil programlama",
+        "Yazılım testi"
+      ],
+      "correctAnswer": "Blokzincir teknolojisi",
+      "correctIndex": 0,
+      "explanation": "Blockchain technology, işlemlerin bloklar halinde dağıtık yapıda kaydedildiği teknolojidir.",
+      "sourceTerms": [
+        "blockchain technology"
+      ],
+      "sourceReferences": [
+        "uploaded_priority_areas",
+        "ethereum_docs"
+      ],
+      "roadmapTriggerIfWrong": "Blokzincir Teknolojileri Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-101"
+    },
+    {
+      "category": "Blokzincir Teknolojileri",
+      "subTopic": "Blokzincir Teknolojileri",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Blokzincirde merkezi olmayan yapıyı en iyi anlatan İngilizce terim hangisidir?",
+      "options": [
+        "Decentralized",
+        "Default",
+        "Descriptive",
+        "Desktop"
+      ],
+      "correctAnswer": "Decentralized",
+      "correctIndex": 0,
+      "explanation": "Decentralized, tek bir merkezi otoriteye bağlı olmayan dağıtık yapıyı ifade eder.",
+      "sourceTerms": [
+        "decentralized"
+      ],
+      "sourceReferences": [
+        "ethereum_docs"
+      ],
+      "roadmapTriggerIfWrong": "Blokzincir Teknolojileri Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-102"
+    },
+    {
+      "category": "Blokzincir Teknolojileri",
+      "subTopic": "Blokzincir Teknolojileri",
+      "questionType": "en_to_tr",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"Smart contract\" Türkçede ne anlama gelir?",
+      "options": [
+        "Akıllı sözleşme",
+        "Akıllı ev",
+        "Akıllı cihaz",
+        "Akıllı şehir"
+      ],
+      "correctAnswer": "Akıllı sözleşme",
+      "correctIndex": 0,
+      "explanation": "Smart contract, blokzincir üzerinde çalışan kod ve veri içeren programdır.",
+      "sourceTerms": [
+        "smart contract"
+      ],
+      "sourceReferences": [
+        "ethereum_docs"
+      ],
+      "roadmapTriggerIfWrong": "Blokzincir Teknolojileri Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-103"
+    },
+    {
+      "category": "Blokzincir Teknolojileri",
+      "subTopic": "Blokzincir Teknolojileri",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Blokzincirde varlık göndermek veya akıllı sözleşme çağırmak için oluşturulan işlem kaydı hangi terimdir?",
+      "options": [
+        "Transaction",
+        "Template",
+        "Terminal",
+        "Trace"
+      ],
+      "correctAnswer": "Transaction",
+      "correctIndex": 0,
+      "explanation": "Transaction, blokzincirde durum değişikliği oluşturan işlem kaydıdır.",
+      "sourceTerms": [
+        "transaction"
+      ],
+      "sourceReferences": [
+        "ethereum_docs"
+      ],
+      "roadmapTriggerIfWrong": "Blokzincir Teknolojileri Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-104"
+    },
+    {
+      "category": "Blokzincir Teknolojileri",
+      "subTopic": "Blokzincir Teknolojileri",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Ethereum’da işlem veya akıllı sözleşme çalıştırmak için ödenen hesaplama maliyeti hangi terimle ifade edilir?",
+      "options": [
+        "Gas",
+        "Gateway",
+        "Graph",
+        "Gray scale"
+      ],
+      "correctAnswer": "Gas",
+      "correctIndex": 0,
+      "explanation": "Gas, Ethereum ağında işlem yürütme maliyetini ifade eder.",
+      "sourceTerms": [
+        "gas"
+      ],
+      "sourceReferences": [
+        "ethereum_docs"
+      ],
+      "roadmapTriggerIfWrong": "Blokzincir Teknolojileri Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-105"
+    },
+    {
+      "category": "Blokzincir Teknolojileri",
+      "subTopic": "Blokzincir Teknolojileri",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Kullanıcının varlıklarını yönetmesini ve işlemleri imzalamasını sağlayan araç hangisidir?",
+      "options": [
+        "Wallet",
+        "Widget",
+        "Window",
+        "Workstation"
+      ],
+      "correctAnswer": "Wallet",
+      "correctIndex": 0,
+      "explanation": "Wallet, kullanıcının anahtarlarını ve blokzincir işlemlerini yönetmesini sağlayan cüzdandır.",
+      "sourceTerms": [
+        "wallet"
+      ],
+      "sourceReferences": [
+        "ethereum_docs"
+      ],
+      "roadmapTriggerIfWrong": "Blokzincir Teknolojileri Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-106"
+    },
+    {
+      "category": "Blokzincir Teknolojileri",
+      "subTopic": "Blokzincir Teknolojileri",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Blokzincirde işlemleri imzalamak için gizli tutulması gereken anahtar hangisidir?",
+      "options": [
+        "Private key",
+        "Public key",
+        "Foreign key",
+        "Access key"
+      ],
+      "correctAnswer": "Private key",
+      "correctIndex": 0,
+      "explanation": "Private key, kullanıcı adına işlem imzalamaya yarayan gizli anahtardır.",
+      "sourceTerms": [
+        "private key"
+      ],
+      "sourceReferences": [
+        "ethereum_docs"
+      ],
+      "roadmapTriggerIfWrong": "Blokzincir Teknolojileri Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-107"
+    },
+    {
+      "category": "Blokzincir Teknolojileri",
+      "subTopic": "Blokzincir Teknolojileri",
+      "questionType": "definition",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "Ağdaki katılımcıların kayıtların doğruluğu üzerinde anlaşmasını sağlayan yapı hangisidir?",
+      "options": [
+        "Consensus mechanism",
+        "Copy protection",
+        "Data collection",
+        "Signal rate"
+      ],
+      "correctAnswer": "Consensus mechanism",
+      "correctIndex": 0,
+      "explanation": "Consensus mechanism, dağıtık ağda ortak duruma karar verilmesini sağlar.",
+      "sourceTerms": [
+        "consensus mechanism"
+      ],
+      "sourceReferences": [
+        "ethereum_docs"
+      ],
+      "roadmapTriggerIfWrong": "Blokzincir Teknolojileri Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-108"
+    },
+    {
+      "category": "Blokzincir Teknolojileri",
+      "subTopic": "Blokzincir Teknolojileri",
+      "questionType": "scenario",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "Bir blokzincir uygulaması, kayıtları tek sunucu yerine birçok düğümde saklıyor. Bu yapı hangi terimle açıklanır?",
+      "options": [
+        "Distributed ledger",
+        "Personal computer",
+        "Text processor",
+        "Voice command"
+      ],
+      "correctAnswer": "Distributed ledger",
+      "correctIndex": 0,
+      "explanation": "Distributed ledger, kayıtların birden fazla düğümde tutulduğu dağıtık defter yapısıdır.",
+      "sourceTerms": [
+        "distributed ledger"
+      ],
+      "sourceReferences": [
+        "ethereum_docs"
+      ],
+      "roadmapTriggerIfWrong": "Blokzincir Teknolojileri Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-109"
+    },
+    {
+      "category": "Blokzincir Teknolojileri",
+      "subTopic": "Blokzincir Teknolojileri",
+      "questionType": "scenario",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "Bir kullanıcı blokzincir işlemini kriptografik olarak onaylıyor. Bu işlem hangi kavramla ilişkilidir?",
+      "options": [
+        "Digital signature",
+        "Raster unit",
+        "Local area network",
+        "Text area"
+      ],
+      "correctAnswer": "Digital signature",
+      "correctIndex": 0,
+      "explanation": "Digital signature, işlemin belirli bir anahtar sahibi tarafından onaylandığını kanıtlamaya yarar.",
+      "sourceTerms": [
+        "digital signature"
+      ],
+      "sourceReferences": [
+        "ethereum_docs"
+      ],
+      "roadmapTriggerIfWrong": "Blokzincir Teknolojileri Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-110"
+    },
+    {
+      "id": "TEQ-111",
+      "category": "Donanım ve Mikroişlemci Tasarımı",
+      "questionType": "en_to_tr",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"CPU\" açılımı nedir?",
+      "options": [
+        "Central Processing Unit",
+        "Computer Program Utility",
+        "Central Pixel Unit",
+        "Control Protocol User"
+      ],
+      "correctAnswer": "Central Processing Unit",
+      "correctIndex": 0,
+      "explanation": "CPU, bilgisayarın komutları işleyen merkezi işlem birimidir.",
+      "sourceTerms": [
+        "CPU"
+      ],
+      "roadmapTriggerIfWrong": "Donanım ve Mikroişlemci Tasarımı Teknik İngilizce Öğrenimi",
+      "subTopic": "Donanım ve Mikroişlemci Tasarımı",
+      "sourceReferences": [
+        "uploaded_course_terms"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-112",
+      "category": "Donanım ve Mikroişlemci Tasarımı",
+      "questionType": "en_to_tr",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Microprocessor\" Türkçede hangi anlama gelir?",
+      "options": [
+        "Mikroişlemci",
+        "Mikrofon",
+        "Mikro kod",
+        "Mikro servis"
+      ],
+      "correctAnswer": "Mikroişlemci",
+      "correctIndex": 0,
+      "explanation": "Microprocessor, işlemci biriminin entegre devre üzerinde küçültülmüş halidir.",
+      "sourceTerms": [
+        "microprocessor"
+      ],
+      "roadmapTriggerIfWrong": "Donanım ve Mikroişlemci Tasarımı Teknik İngilizce Öğrenimi",
+      "subTopic": "Donanım ve Mikroişlemci Tasarımı",
+      "sourceReferences": [
+        "uploaded_course_terms"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-113",
+      "category": "Donanım ve Mikroişlemci Tasarımı",
+      "questionType": "tr_to_en",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Salt okunur bellek\" İngilizcede nasıl ifade edilir?",
+      "options": [
+        "Read-only memory",
+        "Random-access memory",
+        "Video RAM",
+        "Storage capacity"
+      ],
+      "correctAnswer": "Read-only memory",
+      "correctIndex": 0,
+      "explanation": "Read-only memory, normal koşullarda yalnızca okunabilen bellek türüdür.",
+      "sourceTerms": [
+        "read-only memory",
+        "ROM"
+      ],
+      "roadmapTriggerIfWrong": "Donanım ve Mikroişlemci Tasarımı Teknik İngilizce Öğrenimi",
+      "subTopic": "Donanım ve Mikroişlemci Tasarımı",
+      "sourceReferences": [
+        "uploaded_course_terms"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-114",
+      "category": "Donanım ve Mikroişlemci Tasarımı",
+      "questionType": "en_to_tr",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"RAM\" açılımı nedir?",
+      "options": [
+        "Random-Access Memory",
+        "Remote Access Machine",
+        "Raster Array Model",
+        "Read Archive Module"
+      ],
+      "correctAnswer": "Random-Access Memory",
+      "correctIndex": 0,
+      "explanation": "RAM, geçici veri ve komutların tutulduğu hızlı erişimli bellektir.",
+      "sourceTerms": [
+        "RAM"
+      ],
+      "roadmapTriggerIfWrong": "Donanım ve Mikroişlemci Tasarımı Teknik İngilizce Öğrenimi",
+      "subTopic": "Donanım ve Mikroişlemci Tasarımı",
+      "sourceReferences": [
+        "uploaded_course_terms"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-115",
+      "category": "Donanım ve Mikroişlemci Tasarımı",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Komutları çalıştıran ve yorumlayan birim hangi terimle ifade edilir?",
+      "options": [
+        "Processor",
+        "Pointer",
+        "Printer",
+        "Protocol"
+      ],
+      "correctAnswer": "Processor",
+      "correctIndex": 0,
+      "explanation": "Processor, bilgisayardaki komutları işleyen birimdir.",
+      "sourceTerms": [
+        "processor"
+      ],
+      "roadmapTriggerIfWrong": "Donanım ve Mikroişlemci Tasarımı Teknik İngilizce Öğrenimi",
+      "subTopic": "Donanım ve Mikroişlemci Tasarımı",
+      "sourceReferences": [
+        "uploaded_course_terms"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-116",
+      "category": "Donanım ve Mikroişlemci Tasarımı",
+      "questionType": "en_to_tr",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"EPROM\" Türkçede hangi anlama gelir?",
+      "options": [
+        "Programlanabilir salt okunur bellek",
+        "Elektronik yayıncılık",
+        "Harici depolama",
+        "Veri koruma"
+      ],
+      "correctAnswer": "Programlanabilir salt okunur bellek",
+      "correctIndex": 0,
+      "explanation": "EPROM, bir kez yazıldıktan sonra ROM gibi çalışan programlanabilir bellek türüdür.",
+      "sourceTerms": [
+        "EPROM"
+      ],
+      "roadmapTriggerIfWrong": "Donanım ve Mikroişlemci Tasarımı Teknik İngilizce Öğrenimi",
+      "subTopic": "Donanım ve Mikroişlemci Tasarımı",
+      "sourceReferences": [
+        "uploaded_course_terms"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-117",
+      "category": "Donanım ve Mikroişlemci Tasarımı",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Aritmetik işlem sonucunun ayrılan sayı uzunluğunu aşması hangi terimdir?",
+      "options": [
+        "Overflow",
+        "Overwrite",
+        "Output",
+        "Offline"
+      ],
+      "correctAnswer": "Overflow",
+      "correctIndex": 0,
+      "explanation": "Overflow, sayı gösterimi için ayrılan kapasitenin aşılmasıdır.",
+      "sourceTerms": [
+        "overflow"
+      ],
+      "roadmapTriggerIfWrong": "Donanım ve Mikroişlemci Tasarımı Teknik İngilizce Öğrenimi",
+      "subTopic": "Donanım ve Mikroişlemci Tasarımı",
+      "sourceReferences": [
+        "uploaded_course_terms"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-118",
+      "category": "Donanım ve Mikroişlemci Tasarımı",
+      "questionType": "term_field",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"Operation code\" donanım/mikroişlemci tarafında neyi ifade eder?",
+      "options": [
+        "Makine komutunun işlem bölümünün kodlanmış gösterimi",
+        "Web adresi",
+        "Veri tabanı sorgusu",
+        "Kullanıcı şifresi"
+      ],
+      "correctAnswer": "Makine komutunun işlem bölümünün kodlanmış gösterimi",
+      "correctIndex": 0,
+      "explanation": "Operation code, işlemcinin hangi işlemi yapacağını belirten komut kısmıdır.",
+      "sourceTerms": [
+        "operation code"
+      ],
+      "roadmapTriggerIfWrong": "Donanım ve Mikroişlemci Tasarımı Teknik İngilizce Öğrenimi",
+      "subTopic": "Donanım ve Mikroişlemci Tasarımı",
+      "sourceReferences": [
+        "uploaded_course_terms"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-119",
+      "category": "Donanım ve Mikroişlemci Tasarımı",
+      "questionType": "en_to_tr",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "\"Microcode assembler\" Türkçede hangi anlama gelir?",
+      "options": [
+        "Mikro kod birleştirici",
+        "Makro dili",
+        "Manyetik kart",
+        "Posta ağ geçidi"
+      ],
+      "correctAnswer": "Mikro kod birleştirici",
+      "correctIndex": 0,
+      "explanation": "Microcode assembler, mikro programları sembolik biçimden ikili biçime çevirir.",
+      "sourceTerms": [
+        "microcode assembler"
+      ],
+      "roadmapTriggerIfWrong": "Donanım ve Mikroişlemci Tasarımı Teknik İngilizce Öğrenimi",
+      "subTopic": "Donanım ve Mikroişlemci Tasarımı",
+      "sourceReferences": [
+        "uploaded_course_terms"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-120",
+      "category": "Donanım ve Mikroişlemci Tasarımı",
+      "questionType": "scenario",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "Bir devrede yalnızca 0 ve 1 değerleriyle işlem yapılıyorsa bu gösterim hangi terimle ilişkilidir?",
+      "options": [
+        "Binary code",
+        "Gray scale",
+        "Word count",
+        "Voice input"
+      ],
+      "correctAnswer": "Binary code",
+      "correctIndex": 0,
+      "explanation": "Binary code, ikili sayı sistemine dayalı kod gösterimidir.",
+      "sourceTerms": [
+        "binary code"
+      ],
+      "roadmapTriggerIfWrong": "Donanım ve Mikroişlemci Tasarımı Teknik İngilizce Öğrenimi",
+      "subTopic": "Donanım ve Mikroişlemci Tasarımı",
+      "sourceReferences": [
+        "uploaded_course_terms"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-121",
+      "category": "Bilgisayar Ağları ve Sistem Yönetimi",
+      "questionType": "en_to_tr",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Computer Networks\" Türkçede ne anlama gelir?",
+      "options": [
+        "Bilgisayar ağları",
+        "Bilgisayar grafiği",
+        "Bilgisayar destekli tasarım",
+        "Bilgisayar oyunu"
+      ],
+      "correctAnswer": "Bilgisayar ağları",
+      "correctIndex": 0,
+      "explanation": "Computer Networks, veri iletişimi için birbirine bağlanmış sistemleri kapsar.",
+      "sourceTerms": [
+        "computer networks"
+      ],
+      "roadmapTriggerIfWrong": "Bilgisayar Ağları ve Sistem Yönetimi Teknik İngilizce Öğrenimi",
+      "subTopic": "Bilgisayar Ağları ve Sistem Yönetimi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_priority_areas",
+        "kubernetes_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-122",
+      "category": "Bilgisayar Ağları ve Sistem Yönetimi",
+      "questionType": "en_to_tr",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"LAN\" açılımı nedir?",
+      "options": [
+        "Local Area Network",
+        "Long Access Node",
+        "Logical Archive Network",
+        "Linked Application Name"
+      ],
+      "correctAnswer": "Local Area Network",
+      "correctIndex": 0,
+      "explanation": "LAN, sınırlı coğrafi alanda kurulan yerel alan ağıdır.",
+      "sourceTerms": [
+        "LAN",
+        "local area network"
+      ],
+      "roadmapTriggerIfWrong": "Bilgisayar Ağları ve Sistem Yönetimi Teknik İngilizce Öğrenimi",
+      "subTopic": "Bilgisayar Ağları ve Sistem Yönetimi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_priority_areas",
+        "kubernetes_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-123",
+      "category": "Bilgisayar Ağları ve Sistem Yönetimi",
+      "questionType": "tr_to_en",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Kablosuz ağlar\" İngilizcede nasıl ifade edilir?",
+      "options": [
+        "Wireless Networks",
+        "Wide Networks",
+        "Web Nodes",
+        "Wired Numbers"
+      ],
+      "correctAnswer": "Wireless Networks",
+      "correctIndex": 0,
+      "explanation": "Wireless Networks, kablosuz iletişimle çalışan ağları ifade eder.",
+      "sourceTerms": [
+        "wireless networks"
+      ],
+      "roadmapTriggerIfWrong": "Bilgisayar Ağları ve Sistem Yönetimi Teknik İngilizce Öğrenimi",
+      "subTopic": "Bilgisayar Ağları ve Sistem Yönetimi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_priority_areas",
+        "kubernetes_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-124",
+      "category": "Bilgisayar Ağları ve Sistem Yönetimi",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Farklı ağlar arasında yol belirleyen cihaz hangi terimdir?",
+      "options": [
+        "Router",
+        "Scanner",
+        "Speaker",
+        "Template"
+      ],
+      "correctAnswer": "Router",
+      "correctIndex": 0,
+      "explanation": "Router, ağlar arasında veri paketleri için yol belirleyen yönlendiricidir.",
+      "sourceTerms": [
+        "router"
+      ],
+      "roadmapTriggerIfWrong": "Bilgisayar Ağları ve Sistem Yönetimi Teknik İngilizce Öğrenimi",
+      "subTopic": "Bilgisayar Ağları ve Sistem Yönetimi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_priority_areas",
+        "kubernetes_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-125",
+      "category": "Bilgisayar Ağları ve Sistem Yönetimi",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Farklı ağ mimarilerine sahip iki ağı bağlayan işlevsel birim hangisidir?",
+      "options": [
+        "Gateway",
+        "Clipboard",
+        "Font",
+        "Joystick"
+      ],
+      "correctAnswer": "Gateway",
+      "correctIndex": 0,
+      "explanation": "Gateway, farklı ağ mimarilerini birbirine bağlayan ağ geçididir.",
+      "sourceTerms": [
+        "gateway"
+      ],
+      "roadmapTriggerIfWrong": "Bilgisayar Ağları ve Sistem Yönetimi Teknik İngilizce Öğrenimi",
+      "subTopic": "Bilgisayar Ağları ve Sistem Yönetimi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_priority_areas",
+        "kubernetes_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-126",
+      "category": "Bilgisayar Ağları ve Sistem Yönetimi",
+      "questionType": "en_to_tr",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"Network technologies\" Türkçede hangi anlama gelir?",
+      "options": [
+        "Ağ teknolojileri",
+        "Veri bilimi",
+        "Yapay zeka",
+        "Sanal gerçeklik"
+      ],
+      "correctAnswer": "Ağ teknolojileri",
+      "correctIndex": 0,
+      "explanation": "Network technologies, ağ kurma ve yönetme teknolojilerini kapsar.",
+      "sourceTerms": [
+        "network technologies"
+      ],
+      "roadmapTriggerIfWrong": "Bilgisayar Ağları ve Sistem Yönetimi Teknik İngilizce Öğrenimi",
+      "subTopic": "Bilgisayar Ağları ve Sistem Yönetimi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_priority_areas",
+        "kubernetes_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-127",
+      "category": "Bilgisayar Ağları ve Sistem Yönetimi",
+      "questionType": "scenario",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Bir ağda bağlantılı her cihaz veya nokta hangi terimle ifade edilir?",
+      "options": [
+        "Node",
+        "Noise",
+        "Font",
+        "Draft"
+      ],
+      "correctAnswer": "Node",
+      "correctIndex": 0,
+      "explanation": "Node, ağdaki bağlantı noktası veya cihazı ifade eder.",
+      "sourceTerms": [
+        "node"
+      ],
+      "roadmapTriggerIfWrong": "Bilgisayar Ağları ve Sistem Yönetimi Teknik İngilizce Öğrenimi",
+      "subTopic": "Bilgisayar Ağları ve Sistem Yönetimi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_priority_areas",
+        "kubernetes_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-128",
+      "category": "Bilgisayar Ağları ve Sistem Yönetimi",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Sinyali bozabilen girişimi anlatan İngilizce terim hangisidir?",
+      "options": [
+        "Noise",
+        "Node",
+        "Numeric data",
+        "Network"
+      ],
+      "correctAnswer": "Noise",
+      "correctIndex": 0,
+      "explanation": "Noise, sinyalde bilgi kaybına veya bozulmaya yol açabilen girişimdir.",
+      "sourceTerms": [
+        "noise"
+      ],
+      "roadmapTriggerIfWrong": "Bilgisayar Ağları ve Sistem Yönetimi Teknik İngilizce Öğrenimi",
+      "subTopic": "Bilgisayar Ağları ve Sistem Yönetimi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_priority_areas",
+        "kubernetes_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-129",
+      "category": "Bilgisayar Ağları ve Sistem Yönetimi",
+      "questionType": "term_field",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"Linux Network Management\" hangi yol haritasına daha doğrudan eklenmelidir?",
+      "options": [
+        "Bilgisayar Ağları ve Sistem Yönetimi",
+        "Mobil Uygulama Geliştirme",
+        "Yapay Zeka",
+        "Oyun Geliştirme"
+      ],
+      "correctAnswer": "Bilgisayar Ağları ve Sistem Yönetimi",
+      "correctIndex": 0,
+      "explanation": "Linux Network Management, sistem ve ağ yönetimi alanının temel konularındandır.",
+      "sourceTerms": [
+        "linux network management"
+      ],
+      "roadmapTriggerIfWrong": "Bilgisayar Ağları ve Sistem Yönetimi Teknik İngilizce Öğrenimi",
+      "subTopic": "Bilgisayar Ağları ve Sistem Yönetimi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_priority_areas",
+        "kubernetes_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-130",
+      "category": "Bilgisayar Ağları ve Sistem Yönetimi",
+      "questionType": "definition",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "Yerel ağlardan daha geniş coğrafi alanlara hizmet veren ağ türü hangisidir?",
+      "options": [
+        "Wide Area Network",
+        "Local Area Network",
+        "Wireless Local Area Network",
+        "Bus network"
+      ],
+      "correctAnswer": "Wide Area Network",
+      "correctIndex": 0,
+      "explanation": "Wide Area Network, geniş coğrafi alanlarda iletişim sağlayan ağdır.",
+      "sourceTerms": [
+        "WAN",
+        "wide area network"
+      ],
+      "roadmapTriggerIfWrong": "Bilgisayar Ağları ve Sistem Yönetimi Teknik İngilizce Öğrenimi",
+      "subTopic": "Bilgisayar Ağları ve Sistem Yönetimi",
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_priority_areas",
+        "kubernetes_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-131",
+      "category": "Dijital Adli Bilişim ve Kriptografi",
+      "questionType": "en_to_tr",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Cryptography\" Türkçede hangi anlama gelir?",
+      "options": [
+        "Kriptografi",
+        "Grafik programlama",
+        "Web tasarımı",
+        "Veri girişi"
+      ],
+      "correctAnswer": "Kriptografi",
+      "correctIndex": 0,
+      "explanation": "Cryptography, bilgiyi güvenli biçimde şifreleme ve koruma yöntemlerini kapsar.",
+      "sourceTerms": [
+        "cryptography"
+      ],
+      "roadmapTriggerIfWrong": "Dijital Adli Bilişim ve Kriptografi Teknik İngilizce Öğrenimi",
+      "subTopic": "Dijital Adli Bilişim ve Kriptografi",
+      "sourceReferences": [
+        "uploaded_cybersecurity_terms",
+        "nist_csrc",
+        "ethereum_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-132",
+      "category": "Dijital Adli Bilişim ve Kriptografi",
+      "questionType": "en_to_tr",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"Cryptanalysis\" Türkçede hangi anlama gelir?",
+      "options": [
+        "Şifre çözümleme",
+        "Şifreleme",
+        "Yedekleme",
+        "Ağ yönlendirme"
+      ],
+      "correctAnswer": "Şifre çözümleme",
+      "correctIndex": 0,
+      "explanation": "Cryptanalysis, şifreli sistemleri çözümleyerek anlamlı bilgi elde etmeye çalışır.",
+      "sourceTerms": [
+        "cryptanalysis"
+      ],
+      "roadmapTriggerIfWrong": "Dijital Adli Bilişim ve Kriptografi Teknik İngilizce Öğrenimi",
+      "subTopic": "Dijital Adli Bilişim ve Kriptografi",
+      "sourceReferences": [
+        "uploaded_cybersecurity_terms",
+        "nist_csrc",
+        "ethereum_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-133",
+      "category": "Dijital Adli Bilişim ve Kriptografi",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Şifreleme veya şifre çözme faaliyetlerini kontrol eden bit serisi hangi terimdir?",
+      "options": [
+        "Key",
+        "Kernel",
+        "Knowledge base",
+        "Keyboard"
+      ],
+      "correctAnswer": "Key",
+      "correctIndex": 0,
+      "explanation": "Key, kriptografik işlemleri kontrol eden anahtar bilgisidir.",
+      "sourceTerms": [
+        "key"
+      ],
+      "roadmapTriggerIfWrong": "Dijital Adli Bilişim ve Kriptografi Teknik İngilizce Öğrenimi",
+      "subTopic": "Dijital Adli Bilişim ve Kriptografi",
+      "sourceReferences": [
+        "uploaded_cybersecurity_terms",
+        "nist_csrc",
+        "ethereum_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-134",
+      "category": "Dijital Adli Bilişim ve Kriptografi",
+      "questionType": "scenario",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Bir mesajın gerçekten gönderenden gelip gelmediği ve yolda değişmediği kontrol ediliyor. Bu işlem hangi terimdir?",
+      "options": [
+        "Message authentication",
+        "Image processing",
+        "File updating",
+        "Desktop publishing"
+      ],
+      "correctAnswer": "Message authentication",
+      "correctIndex": 0,
+      "explanation": "Message authentication, mesajın kaynağını ve bütünlüğünü doğrulamayı ifade eder.",
+      "sourceTerms": [
+        "message authentication"
+      ],
+      "roadmapTriggerIfWrong": "Dijital Adli Bilişim ve Kriptografi Teknik İngilizce Öğrenimi",
+      "subTopic": "Dijital Adli Bilişim ve Kriptografi",
+      "sourceReferences": [
+        "uploaded_cybersecurity_terms",
+        "nist_csrc",
+        "ethereum_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-135",
+      "category": "Dijital Adli Bilişim ve Kriptografi",
+      "questionType": "en_to_tr",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"Digital signature\" Türkçede hangi anlama gelir?",
+      "options": [
+        "Sayısal imza",
+        "Sayısal veri",
+        "Sayısal kontrol",
+        "Sayısal analiz"
+      ],
+      "correctAnswer": "Sayısal imza",
+      "correctIndex": 0,
+      "explanation": "Digital signature, mesajın kaynağını doğrulamaya yardımcı olan dijital imzadır.",
+      "sourceTerms": [
+        "digital signature"
+      ],
+      "roadmapTriggerIfWrong": "Dijital Adli Bilişim ve Kriptografi Teknik İngilizce Öğrenimi",
+      "subTopic": "Dijital Adli Bilişim ve Kriptografi",
+      "sourceReferences": [
+        "uploaded_cybersecurity_terms",
+        "nist_csrc",
+        "ethereum_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-136",
+      "category": "Dijital Adli Bilişim ve Kriptografi",
+      "questionType": "definition",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "Verinin kasıtlı veya kazara değiştirilip değiştirilmediğini tespit etmeye yönelik işlem hangisidir?",
+      "options": [
+        "Manipulation detection",
+        "Pattern matching",
+        "Word count",
+        "Page break"
+      ],
+      "correctAnswer": "Manipulation detection",
+      "correctIndex": 0,
+      "explanation": "Manipulation detection, veride oynama/hile yapılıp yapılmadığını tespit eder.",
+      "sourceTerms": [
+        "manipulation detection"
+      ],
+      "roadmapTriggerIfWrong": "Dijital Adli Bilişim ve Kriptografi Teknik İngilizce Öğrenimi",
+      "subTopic": "Dijital Adli Bilişim ve Kriptografi",
+      "sourceReferences": [
+        "uploaded_cybersecurity_terms",
+        "nist_csrc",
+        "ethereum_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-137",
+      "category": "Dijital Adli Bilişim ve Kriptografi",
+      "questionType": "scenario",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "Bir adli bilişim uzmanı, sistemdeki yürütülen komutların sırasını ve sonuçlarını inceliyor. Bu kayıt hangi terimle ifade edilir?",
+      "options": [
+        "Trace",
+        "Transfer",
+        "Template",
+        "Terminal"
+      ],
+      "correctAnswer": "Trace",
+      "correctIndex": 0,
+      "explanation": "Trace, programın yürütme kaydını ve işlem sırasını gösterir.",
+      "sourceTerms": [
+        "trace"
+      ],
+      "roadmapTriggerIfWrong": "Dijital Adli Bilişim ve Kriptografi Teknik İngilizce Öğrenimi",
+      "subTopic": "Dijital Adli Bilişim ve Kriptografi",
+      "sourceReferences": [
+        "uploaded_cybersecurity_terms",
+        "nist_csrc",
+        "ethereum_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-138",
+      "category": "Dijital Adli Bilişim ve Kriptografi",
+      "questionType": "term_field",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"Information Security and Cryptography\" hangi alanın test kategorisine daha uygundur?",
+      "options": [
+        "Dijital Adli Bilişim ve Kriptografi",
+        "Web Geliştirme",
+        "Robotik",
+        "Oyun Programlama"
+      ],
+      "correctAnswer": "Dijital Adli Bilişim ve Kriptografi",
+      "correctIndex": 0,
+      "explanation": "Information Security and Cryptography, kriptografi ve güvenli veri inceleme alanıyla ilişkilidir.",
+      "sourceTerms": [
+        "information security and cryptography"
+      ],
+      "roadmapTriggerIfWrong": "Dijital Adli Bilişim ve Kriptografi Teknik İngilizce Öğrenimi",
+      "subTopic": "Dijital Adli Bilişim ve Kriptografi",
+      "sourceReferences": [
+        "uploaded_cybersecurity_terms",
+        "nist_csrc",
+        "ethereum_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-139",
+      "category": "Dijital Adli Bilişim ve Kriptografi",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Bit veya karakter dizilerinin başka dizilerle değiştirilmesine dayalı şifreleme yaklaşımı hangi terimdir?",
+      "options": [
+        "Substitution",
+        "Submission",
+        "Subscriber",
+        "Spooling"
+      ],
+      "correctAnswer": "Substitution",
+      "correctIndex": 0,
+      "explanation": "Substitution, karakter/bit dizilerini başka dizilerle değiştirme yöntemidir.",
+      "sourceTerms": [
+        "substitution"
+      ],
+      "roadmapTriggerIfWrong": "Dijital Adli Bilişim ve Kriptografi Teknik İngilizce Öğrenimi",
+      "subTopic": "Dijital Adli Bilişim ve Kriptografi",
+      "sourceReferences": [
+        "uploaded_cybersecurity_terms",
+        "nist_csrc",
+        "ethereum_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "id": "TEQ-140",
+      "category": "Dijital Adli Bilişim ve Kriptografi",
+      "questionType": "scenario",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "Bir incelemede silinen dosyaların geri getirilmesi ve sistemin olay öncesi durumunun analiz edilmesi amaçlanıyor. Bu süreç hangi terimle ilişkilidir?",
+      "options": [
+        "Data reconstitution",
+        "Data entry",
+        "Data type",
+        "Data bank"
+      ],
+      "correctAnswer": "Data reconstitution",
+      "correctIndex": 0,
+      "explanation": "Data reconstitution, farklı kaynaklardan veriyi yeniden oluşturma yaklaşımıdır.",
+      "sourceTerms": [
+        "data reconstitution"
+      ],
+      "roadmapTriggerIfWrong": "Dijital Adli Bilişim ve Kriptografi Teknik İngilizce Öğrenimi",
+      "subTopic": "Dijital Adli Bilişim ve Kriptografi",
+      "sourceReferences": [
+        "uploaded_cybersecurity_terms",
+        "nist_csrc",
+        "ethereum_docs"
+      ],
+      "profileMetric": "technicalEnglish"
+    },
+    {
+      "category": "Sanal ve Arttırılmış Gerçeklik (VR/AR)",
+      "subTopic": "Sanal ve Arttırılmış Gerçeklik (VR/AR)",
+      "questionType": "en_to_tr",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Virtual Reality (VR)\" Türkçede ne anlama gelir?",
+      "options": [
+        "Sanal gerçeklik",
+        "Artırılmış gerçeklik",
+        "Veri madenciliği",
+        "Ağ teknolojisi"
+      ],
+      "correctAnswer": "Sanal gerçeklik",
+      "correctIndex": 0,
+      "explanation": "Virtual Reality, kullanıcıyı bilgisayar üretimli sanal çevreye sokan teknolojidir.",
+      "sourceTerms": [
+        "virtual reality",
+        "VR"
+      ],
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_priority_areas",
+        "unity_docs"
+      ],
+      "roadmapTriggerIfWrong": "Sanal ve Arttırılmış Gerçeklik (VR/AR) Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-141"
+    },
+    {
+      "category": "Sanal ve Arttırılmış Gerçeklik (VR/AR)",
+      "subTopic": "Sanal ve Arttırılmış Gerçeklik (VR/AR)",
+      "questionType": "en_to_tr",
+      "difficulty": "easy",
+      "weight": 1.0,
+      "question": "\"Augmented Reality (AR)\" Türkçede ne anlama gelir?",
+      "options": [
+        "Artırılmış gerçeklik",
+        "Sanal gerçeklik",
+        "Yapay zeka",
+        "Bulut bilişim"
+      ],
+      "correctAnswer": "Artırılmış gerçeklik",
+      "correctIndex": 0,
+      "explanation": "Augmented Reality, gerçek dünya üzerine dijital içerik bindiren teknolojidir.",
+      "sourceTerms": [
+        "augmented reality",
+        "AR"
+      ],
+      "sourceReferences": [
+        "unity_docs"
+      ],
+      "roadmapTriggerIfWrong": "Sanal ve Arttırılmış Gerçeklik (VR/AR) Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-142"
+    },
+    {
+      "category": "Sanal ve Arttırılmış Gerçeklik (VR/AR)",
+      "subTopic": "Sanal ve Arttırılmış Gerçeklik (VR/AR)",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "AR uygulamasında dijital içeriğin gerçek dünyanın üzerine yerleştirilmesi hangi terimle ifade edilir?",
+      "options": [
+        "Overlay",
+        "Overflow",
+        "Overwrite",
+        "Offline"
+      ],
+      "correctAnswer": "Overlay",
+      "correctIndex": 0,
+      "explanation": "Overlay, dijital içeriğin gerçek görüntünün üzerine bindirilmesini ifade eder.",
+      "sourceTerms": [
+        "overlay"
+      ],
+      "sourceReferences": [
+        "unity_docs"
+      ],
+      "roadmapTriggerIfWrong": "Sanal ve Arttırılmış Gerçeklik (VR/AR) Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-143"
+    },
+    {
+      "category": "Sanal ve Arttırılmış Gerçeklik (VR/AR)",
+      "subTopic": "Sanal ve Arttırılmış Gerçeklik (VR/AR)",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "VR ortamında bilgisayar tarafından oluşturulan çevre hangi terimle ifade edilir?",
+      "options": [
+        "Artificial environment",
+        "External storage",
+        "Information law",
+        "Wireless network"
+      ],
+      "correctAnswer": "Artificial environment",
+      "correctIndex": 0,
+      "explanation": "Artificial environment, sanal gerçeklikte bilgisayar tarafından üretilen çevredir.",
+      "sourceTerms": [
+        "artificial environment"
+      ],
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_priority_areas",
+        "unity_docs"
+      ],
+      "roadmapTriggerIfWrong": "Sanal ve Arttırılmış Gerçeklik (VR/AR) Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-144"
+    },
+    {
+      "category": "Sanal ve Arttırılmış Gerçeklik (VR/AR)",
+      "subTopic": "Sanal ve Arttırılmış Gerçeklik (VR/AR)",
+      "questionType": "en_to_tr",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"Virtual objects\" Türkçede hangi anlama gelir?",
+      "options": [
+        "Sanal nesneler",
+        "Fiziksel nesneler",
+        "Optik karakterler",
+        "Manyetik kartlar"
+      ],
+      "correctAnswer": "Sanal nesneler",
+      "correctIndex": 0,
+      "explanation": "Virtual objects, sanal veya artırılmış gerçeklik ortamındaki dijital nesnelerdir.",
+      "sourceTerms": [
+        "virtual objects"
+      ],
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_priority_areas",
+        "unity_docs"
+      ],
+      "roadmapTriggerIfWrong": "Sanal ve Arttırılmış Gerçeklik (VR/AR) Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-145"
+    },
+    {
+      "category": "Sanal ve Arttırılmış Gerçeklik (VR/AR)",
+      "subTopic": "Sanal ve Arttırılmış Gerçeklik (VR/AR)",
+      "questionType": "scenario",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Bir AR uygulaması kameradan gelen gerçek dünya görüntüsünün üzerine 3D model yerleştiriyor. Kullanılan gerçek çevre verisi hangi terimle ilişkilidir?",
+      "options": [
+        "Real-world data",
+        "Read-only memory",
+        "Raster unit",
+        "Risk analysis"
+      ],
+      "correctAnswer": "Real-world data",
+      "correctIndex": 0,
+      "explanation": "Real-world data, gerçek dünyadan alınan çevre verisini ifade eder.",
+      "sourceTerms": [
+        "real-world data"
+      ],
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_priority_areas",
+        "unity_docs"
+      ],
+      "roadmapTriggerIfWrong": "Sanal ve Arttırılmış Gerçeklik (VR/AR) Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-146"
+    },
+    {
+      "category": "Sanal ve Arttırılmış Gerçeklik (VR/AR)",
+      "subTopic": "Sanal ve Arttırılmış Gerçeklik (VR/AR)",
+      "questionType": "definition",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "Bilgisayar tarafından üretilen veri hangi İngilizce ifadeyle anlatılır?",
+      "options": [
+        "Computer generated data",
+        "Computer network",
+        "Computer virus",
+        "Computer aided design"
+      ],
+      "correctAnswer": "Computer generated data",
+      "correctIndex": 0,
+      "explanation": "Computer generated data, bilgisayar tarafından oluşturulan veridir.",
+      "sourceTerms": [
+        "computer generated data"
+      ],
+      "sourceReferences": [
+        "uploaded_course_terms",
+        "uploaded_priority_areas",
+        "unity_docs"
+      ],
+      "roadmapTriggerIfWrong": "Sanal ve Arttırılmış Gerçeklik (VR/AR) Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-147"
+    },
+    {
+      "category": "Sanal ve Arttırılmış Gerçeklik (VR/AR)",
+      "subTopic": "Sanal ve Arttırılmış Gerçeklik (VR/AR)",
+      "questionType": "definition",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "VR/AR uygulamalarında baş ve el hareketlerini takip etme süreci hangi terimle ifade edilir?",
+      "options": [
+        "Motion tracking",
+        "Message authentication",
+        "Data reconstitution",
+        "Word count"
+      ],
+      "correctAnswer": "Motion tracking",
+      "correctIndex": 0,
+      "explanation": "Motion tracking, kullanıcının hareketlerini algılayıp sanal/karma ortama yansıtma sürecidir.",
+      "sourceTerms": [
+        "motion tracking"
+      ],
+      "sourceReferences": [
+        "unity_docs"
+      ],
+      "roadmapTriggerIfWrong": "Sanal ve Arttırılmış Gerçeklik (VR/AR) Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-148"
+    },
+    {
+      "category": "Sanal ve Arttırılmış Gerçeklik (VR/AR)",
+      "subTopic": "Sanal ve Arttırılmış Gerçeklik (VR/AR)",
+      "questionType": "definition",
+      "difficulty": "hard",
+      "weight": 2.0,
+      "question": "İki göz için farklı görüntüler üreterek derinlik hissi oluşturan görüntüleme tekniği hangisidir?",
+      "options": [
+        "Stereoscopic rendering",
+        "Server-side rendering",
+        "Speech recognition",
+        "Sequential analysis"
+      ],
+      "correctAnswer": "Stereoscopic rendering",
+      "correctIndex": 0,
+      "explanation": "Stereoscopic rendering, VR'da derinlik algısı için iki göz perspektifinin ayrı oluşturulmasıdır.",
+      "sourceTerms": [
+        "stereoscopic rendering"
+      ],
+      "sourceReferences": [
+        "unity_docs"
+      ],
+      "roadmapTriggerIfWrong": "Sanal ve Arttırılmış Gerçeklik (VR/AR) Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-149"
+    },
+    {
+      "category": "Sanal ve Arttırılmış Gerçeklik (VR/AR)",
+      "subTopic": "Sanal ve Arttırılmış Gerçeklik (VR/AR)",
+      "questionType": "term_field",
+      "difficulty": "medium",
+      "weight": 1.5,
+      "question": "\"Spatial computing\" hangi alanla en doğrudan ilişkilidir?",
+      "options": [
+        "Sanal ve Arttırılmış Gerçeklik (VR/AR)",
+        "Veri Tabanı Yönetimi",
+        "Mikroişlemci Tasarımı",
+        "Siber Suç Analizi"
+      ],
+      "correctAnswer": "Sanal ve Arttırılmış Gerçeklik (VR/AR)",
+      "correctIndex": 0,
+      "explanation": "Spatial computing, dijital içeriğin fiziksel çevreyle konumsal olarak etkileşmesini ifade eder.",
+      "sourceTerms": [
+        "spatial computing"
+      ],
+      "sourceReferences": [
+        "unity_docs"
+      ],
+      "roadmapTriggerIfWrong": "Sanal ve Arttırılmış Gerçeklik (VR/AR) Teknik İngilizce Öğrenimi",
+      "profileMetric": "technicalEnglish",
+      "id": "TEQ-150"
+    }
+  ]
+}
