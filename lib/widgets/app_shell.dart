@@ -21,7 +21,7 @@ class _AppShellState extends State<AppShell> {
   @override
   Widget build(BuildContext context) {
     final bottomInset = MediaQuery.paddingOf(context).bottom;
-    const bottomNavReserve = 144.0;
+    const bottomContentPadding = 0.0;
 
     return Scaffold(
       extendBody: true,
@@ -46,7 +46,7 @@ class _AppShellState extends State<AppShell> {
                         duration: const Duration(milliseconds: 220),
                         child: Padding(
                           key: ValueKey(_index),
-                          padding: EdgeInsets.fromLTRB(horizontal, 0, horizontal, bottomNavReserve + bottomInset),
+                          padding: EdgeInsets.fromLTRB(horizontal, 0, horizontal, bottomContentPadding + bottomInset),
                           child: widget.tabs[_index],
                         ),
                       ),
@@ -59,22 +59,29 @@ class _AppShellState extends State<AppShell> {
         ],
       ),
       bottomNavigationBar: ClipRect(
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
-          child: Container(
-            padding: EdgeInsets.fromLTRB(14, 12, 14, 12 + bottomInset),
-            decoration: BoxDecoration(
-              color: const Color(0xB2050505),
-              border: Border(top: BorderSide(color: Colors.white.withValues(alpha: 0.06))),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                BottomNavItem(label: 'Ana Sayfa', icon: Icons.home_rounded, active: _index == 0, onTap: () => setState(() => _index = 0)),
-                BottomNavItem(label: 'Harita', icon: Icons.map_rounded, active: _index == 1, onTap: () => setState(() => _index = 1)),
-                BottomNavItem(label: 'Projeler', icon: Icons.work_rounded, active: _index == 2, onTap: () => setState(() => _index = 2)),
-                BottomNavItem(label: 'Profil', icon: Icons.person_rounded, active: _index == 3, onTap: () => setState(() => _index = 3)),
-              ],
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(12, 0, 12, 12 + bottomInset),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(28),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
+              child: Container(
+                padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
+                decoration: BoxDecoration(
+                  color: const Color(0x4D050505),
+                  border: Border.all(color: Colors.white.withValues(alpha: 0.06)),
+                  borderRadius: BorderRadius.circular(28),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    BottomNavItem(label: 'Ana Sayfa', icon: Icons.home_rounded, active: _index == 0, onTap: () => setState(() => _index = 0)),
+                    BottomNavItem(label: 'Harita', icon: Icons.map_rounded, active: _index == 1, onTap: () => setState(() => _index = 1)),
+                    BottomNavItem(label: 'Projeler', icon: Icons.work_rounded, active: _index == 2, onTap: () => setState(() => _index = 2)),
+                    BottomNavItem(label: 'Profil', icon: Icons.person_rounded, active: _index == 3, onTap: () => setState(() => _index = 3)),
+                  ],
+                ),
+              ),
             ),
           ),
         ),
