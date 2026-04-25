@@ -4,6 +4,10 @@ import '../widgets/shared_widgets.dart';
 
 import '../screens/team_cohesion_test_screen.dart';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../screens/career_test_screen.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -92,86 +96,118 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class _HeroCard extends StatelessWidget {
+class _HeroCard extends StatefulWidget {
   const _HeroCard();
 
   @override
+  State<_HeroCard> createState() => _HeroCardState();
+}
+
+class _HeroCardState extends State<_HeroCard> {
+  String recommendedField = "Kariyer Testini Çöz!";
+  bool hasTested = false; // Testin çözülüp çözülmediğini takip ediyoruz
+
+  @override
+  void initState() {
+    super.initState();
+    _loadResult();
+  }
+
+  Future<void> _loadResult() async {
+    final prefs = await SharedPreferences.getInstance();
+    final savedField = prefs.getString('recommended_field');
+
+    setState(() {
+      if (savedField != null) {
+        recommendedField = savedField;
+        hasTested = true;
+      } else {
+        recommendedField = "Kariyer Testini Çöz!";
+        hasTested = false;
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return GlassCard(
-      gradient: const LinearGradient(
-        colors: [Color(0x6611183A), Color(0x22000000)],
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-      ),
-      child: Stack(
-        children: [
-          Positioned(
-            right: -24,
-            top: -24,
-            child: Container(
-              width: 120,
-              height: 120,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: Color(0x1AA855F7),
+    // Tüm kartı tıklanabilir yaptık
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const CareerTestScreen()),
+        ).then((_) {
+          // Kullanıcı testten geri döndüğünde skoru hemen ekrana yansıtmak için:
+          _loadResult();
+        });
+      },
+      child: GlassCard(
+        gradient: const LinearGradient(
+          colors: [Color(0x6611183A), Color(0x22000000)],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        child: Stack(
+          children: [
+            Positioned(
+              right: -24,
+              top: -24,
+              child: Container(
+                width: 120,
+                height: 120,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Color(0x1AA855F7),
+                ),
               ),
             ),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'ÖNERİLEN ALANIN',
-                style: TextStyle(
-                  color: Color(0xFFA855F7),
-                  fontSize: 10,
-                  fontWeight: FontWeight.w900,
-                  letterSpacing: 2,
-                ),
-              ),
-              const SizedBox(height: 14),
-              const Text(
-                'Mobil Uygulama\nGeliştirme',
-                style: TextStyle(
-                  fontSize: 26,
-                  height: 1.0,
-                  fontWeight: FontWeight.w900,
-                  letterSpacing: -0.8,
-                ),
-              ),
-              const SizedBox(height: 14),
-              Row(
-                children: [
-                  const _MatchRing(value: 0.82),
-                  const SizedBox(width: 12),
-                  const Text(
-                    'Eşleşme',
-                    style: TextStyle(
-                      color: Color(0xFFD8B4FE),
-                      fontSize: 12,
-                      fontWeight: FontWeight.w800,
-                    ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  hasTested ? 'ÖNERİLEN ALANIN' : 'YOL HARİTANI BELİRLE',
+                  style: const TextStyle(
+                    color: Color(0xFFA855F7),
+                    fontSize: 10,
+                    fontWeight: FontWeight.w900,
+                    letterSpacing: 2,
                   ),
-                ],
-              ),
-              const SizedBox(height: 12),
-              const Text(
-                'Profiline en uygun alan bu!',
-                style: TextStyle(
-                  color: Color(0xFF9CA3AF),
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
                 ),
-              ),
-              const SizedBox(height: 14),
-              const _TextAction(
-                label: 'Yol Haritasını Gör',
-                icon: Icons.arrow_forward_rounded,
-                accent: Color(0xFFA855F7),
-              ),
-            ],
-          ),
-        ],
+                const SizedBox(height: 14),
+
+                Text(
+                  recommendedField,
+                  style: const TextStyle(
+                    fontSize: 24,
+                    height: 1.1,
+                    fontWeight: FontWeight.w900,
+                    letterSpacing: -0.8,
+                  ),
+                ),
+
+                const SizedBox(height: 14),
+                // Sahte eşleşme oranını ve yüzüğü tamamen sildik.
+                Text(
+                  hasTested
+                      ? 'Profiline en uygun alan bu!'
+                      : 'Sana en uygun alanı bulmak için tıkla ve 10 soruluk testi tamamla.',
+                  style: const TextStyle(
+                    color: Color(0xFF9CA3AF),
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+
+                const SizedBox(height: 14),
+                _TextAction(
+                  label: hasTested ? 'Yol Haritasını Gör' : 'Teste Başla',
+                  icon: Icons.arrow_forward_rounded,
+                  accent: const Color(0xFFA855F7),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -444,10 +480,11 @@ class _TeamCohesionTestCard extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(
-            builder: (context) => const TeamCohesionTestScreen(),
-          ),
-        );
+          MaterialPageRoute(builder: (context) => const CareerTestScreen()),
+        ).then((value) {
+          // Kullanıcı testten dönünce ana sayfayı yenile (Stateful widget içindeysen geçerlidir)
+          // Eğer HomeScreen stateless ise, uygulamayı kapatıp açtığında sonuç zaten güncellenmiş olur.
+        });
       },
       child: GlassCard(
         child: Row(
