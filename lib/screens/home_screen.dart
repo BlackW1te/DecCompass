@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../widgets/shared_widgets.dart';
 
 import '../screens/team_cohesion_test_screen.dart';
+import '../screens/test_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -49,6 +50,8 @@ class HomeScreen extends StatelessWidget {
           SectionHeader(title: 'Testler', action: 'Tümünü Gör', onTap: () {}),
           const SizedBox(height: 12),
           const _TeamCohesionTestCard(),
+          const SizedBox(height: 12),
+          const _TechnicalEnglishTestCard(),
           const SizedBox(height: 18),
           const Text(
             'Alternatif Alanlar',
@@ -488,6 +491,68 @@ class _TeamCohesionTestCard extends StatelessWidget {
             const SizedBox(width: 8),
             // Ok ikonu
             const Icon(Icons.chevron_right_rounded, color: Color(0xFF9CA3AF)),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _TechnicalEnglishTestCard extends StatelessWidget {
+  const _TechnicalEnglishTestCard();
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const TestScreen(
+              title: 'Teknik İngilizce Testi',
+              assetPath: 'lib/data/teknik_ingilizce_alan_bazli_test_sorulari_v2.json',
+              questionLimit: 20,
+            ),
+          ),
+        );
+      },
+      child: GlassCard(
+        child: Row(
+          children: [
+            Container(
+              width: 54,
+              height: 54,
+              decoration: BoxDecoration(
+                color: const Color(0x1A60A5FA),
+                borderRadius: BorderRadius.circular(18),
+                border: Border.all(color: const Color(0x3360A5FA)),
+              ),
+              child: const Icon(Icons.translate_rounded, color: Color(0xFF60A5FA)),
+            ),
+            const SizedBox(width: 14),
+            const Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Teknik İngilizce Testi',
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
+                  ),
+                  SizedBox(height: 6),
+                  Text(
+                    'JSON verisinden yüklenen alan bazlı sorularla seviyeni ölç.',
+                    style: TextStyle(
+                      fontSize: 11,
+                      color: Color(0xFF9CA3AF),
+                      fontWeight: FontWeight.w600,
+                      height: 1.3,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(width: 8),
+            const Icon(Icons.arrow_forward_ios_rounded, size: 16, color: Color(0xFF60A5FA)),
           ],
         ),
       ),
