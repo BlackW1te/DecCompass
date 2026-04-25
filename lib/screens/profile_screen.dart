@@ -47,6 +47,23 @@ class ProfileScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 18),
+          const Text('Profil Özeti', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900, letterSpacing: -0.4)),
+          const SizedBox(height: 12),
+          GridView.count(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            crossAxisCount: 2,
+            childAspectRatio: 1.65,
+            crossAxisSpacing: 12,
+            mainAxisSpacing: 12,
+            children: const [
+              ProgressCard(label: 'Kod Bilgisi', value: 0.50, level: 'Orta', start: Color(0xFFA855F7), end: Color(0xFF3B82F6)),
+              ProgressCard(label: 'Algoritma', value: 0.60, level: 'İleri', start: Color(0xFF3B82F6), end: Color(0xFF06B6D4)),
+              ProgressCard(label: 'Takım Uyumu', value: 0.85, level: 'Yüksek', start: Color(0xFF34D399), end: Color(0xFF14B8A6)),
+              ProgressCard(label: 'İngilizce', value: 0.45, level: 'Orta', start: Color(0xFFF59E0B), end: Color(0xFFEF4444)),
+            ],
+          ),
+          const SizedBox(height: 18),
           const Text('Yetenek Profili', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900, letterSpacing: -0.4)),
           const SizedBox(height: 12),
           GlassCard(

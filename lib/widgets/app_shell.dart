@@ -21,39 +21,41 @@ class _AppShellState extends State<AppShell> {
   @override
   Widget build(BuildContext context) {
     final bottomInset = MediaQuery.paddingOf(context).bottom;
-    const bottomContentPadding = 0.0;
+    const bottomContentPadding = 110.0;
 
     return Scaffold(
       extendBody: true,
       body: Stack(
         children: [
           const _Backdrop(),
-          SafeArea(
-            bottom: false,
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                final compact = constraints.maxWidth < 390;
-                final horizontal = compact ? 16.0 : 20.0;
+          Positioned.fill(
+            child: SafeArea(
+              bottom: false,
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  final compact = constraints.maxWidth < 390;
+                  final horizontal = compact ? 16.0 : 20.0;
 
-                return Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(horizontal, 8, horizontal, 10),
-                      child: _TopBar(title: _titles[_index]),
-                    ),
-                    Expanded(
-                      child: AnimatedSwitcher(
-                        duration: const Duration(milliseconds: 220),
-                        child: Padding(
-                          key: ValueKey(_index),
-                          padding: EdgeInsets.fromLTRB(horizontal, 0, horizontal, bottomContentPadding + bottomInset),
-                          child: widget.tabs[_index],
+                  return Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(horizontal, 8, horizontal, 10),
+                        child: _TopBar(title: _titles[_index]),
+                      ),
+                      Expanded(
+                        child: AnimatedSwitcher(
+                          duration: const Duration(milliseconds: 220),
+                          child: Padding(
+                            key: ValueKey(_index),
+                            padding: EdgeInsets.fromLTRB(horizontal, 0, horizontal, bottomContentPadding + bottomInset),
+                            child: widget.tabs[_index],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                );
-              },
+                    ],
+                  );
+                },
+              ),
             ),
           ),
         ],
