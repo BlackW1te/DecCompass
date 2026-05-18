@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../widgets/shared_widgets.dart';
 
-import '../screens/team_cohesion_test_screen.dart';
 import '../screens/test_screen.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
@@ -216,77 +215,7 @@ class _HeroCardState extends State<_HeroCard> {
   }
 }
 
-class _MatchRing extends StatelessWidget {
-  const _MatchRing({required this.value});
 
-  final double value;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 46,
-      height: 46,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          CustomPaint(
-            painter: _RingPainter(
-              background: const Color(0x14FFFFFF),
-              foreground: const Color(0xFFA855F7),
-              value: value,
-            ),
-            size: const Size.square(46),
-          ),
-          Text(
-            '${(value * 100).round()}%',
-            style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w900),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _RingPainter extends CustomPainter {
-  const _RingPainter({
-    required this.background,
-    required this.foreground,
-    required this.value,
-  });
-
-  final Color background;
-  final Color foreground;
-  final double value;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final center = Offset(size.width / 2, size.height / 2);
-    final radius = size.width / 2 - 3;
-    final basePaint = Paint()
-      ..color = background
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 4;
-    final progressPaint = Paint()
-      ..color = foreground
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 4
-      ..strokeCap = StrokeCap.round;
-    canvas.drawCircle(center, radius, basePaint);
-    canvas.drawArc(
-      Rect.fromCircle(center: center, radius: radius),
-      -1.5708,
-      value * 6.28318,
-      false,
-      progressPaint,
-    );
-  }
-
-  @override
-  bool shouldRepaint(covariant _RingPainter oldDelegate) =>
-      oldDelegate.value != value ||
-      oldDelegate.background != background ||
-      oldDelegate.foreground != foreground;
-}
 
 class _DailyTaskCard extends StatelessWidget {
   const _DailyTaskCard();

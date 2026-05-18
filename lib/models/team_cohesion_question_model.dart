@@ -14,8 +14,8 @@ class Question {
   // Eğer copy metodunu eklediysen onu da güncelle:
   Question copy() {
     return Question(
-      text: this.text,
-      category: this.category,
+      text: text,
+      category: category,
       score: 0.0, // <-- Burası da 0.0 olmalı
     );
   }

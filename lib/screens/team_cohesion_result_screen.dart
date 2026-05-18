@@ -51,8 +51,8 @@ class TeamCohesionResultScreen extends StatelessWidget {
                     child: CircularProgressIndicator(
                       value: score / 100,
                       strokeWidth: 14,
-                      backgroundColor: Colors.white.withOpacity(
-                        0.05,
+                      backgroundColor: Colors.white.withAlpha(
+                        13,
                       ), // Koyu temaya uygun silik arka plan
                       valueColor: AlwaysStoppedAnimation<Color>(profile.color),
                       strokeCap: StrokeCap.round, // Kenarları yumuşatılmış bar
@@ -102,7 +102,7 @@ class TeamCohesionResultScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16),
                   ), // Daha modern köşeli buton
                   elevation: 8,
-                  shadowColor: profile.color.withOpacity(0.5),
+                  shadowColor: profile.color.withAlpha(128),
                 ),
                 onPressed: () => Navigator.pop(context),
                 child: const Text(

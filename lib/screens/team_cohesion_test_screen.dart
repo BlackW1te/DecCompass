@@ -9,7 +9,7 @@ class TeamCohesionTestScreen extends StatefulWidget {
   const TeamCohesionTestScreen({super.key});
 
   @override
-  _TeamCohesionTestScreenState createState() => _TeamCohesionTestScreenState();
+  State<TeamCohesionTestScreen> createState() => _TeamCohesionTestScreenState();
 }
 
 class _TeamCohesionTestScreenState extends State<TeamCohesionTestScreen> {
@@ -142,7 +142,7 @@ class _TeamCohesionTestScreenState extends State<TeamCohesionTestScreen> {
                           colors: [Color(0xFF34D399), Color(0xFF10B981)],
                         )
                       : null,
-                  color: isSelected ? null : Colors.white.withOpacity(0.05),
+                  color: isSelected ? null : Colors.white.withAlpha(13),
                 ),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
