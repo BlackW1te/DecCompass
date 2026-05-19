@@ -30,27 +30,11 @@ class HomeScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 4),
-          Text(
-            'Merhaba, Ahmet 👋',
-            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-              fontSize: compact ? 24 : 28,
-              fontWeight: FontWeight.w900,
-              letterSpacing: -0.8,
-            ),
-          ),
-          const SizedBox(height: 6),
-          const Text(
-            'Yazılım kariyer yolculuğuna devam et!',
-            style: TextStyle(
-              color: Color(0xFF9CA3AF),
-              fontSize: 12,
-              fontWeight: FontWeight.w700,
-              letterSpacing: 1.3,
-            ),
-          ),
           const SizedBox(height: 18),
-          const _HeroCard(),
+          const Padding(
+            padding: EdgeInsets.only(top: 4, left: 4, right: 4),
+            child: _HeroCard(),
+          ),
           const SizedBox(height: 18),
           SectionHeader(
             title: 'Günlük Görev',
