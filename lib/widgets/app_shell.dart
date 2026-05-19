@@ -138,54 +138,29 @@ class _TopBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        _IconButton(icon: Icons.menu_rounded, onTap: () {}),
-        const SizedBox(width: 12),
-        Expanded(
-          child: Column(
-            children: [
-              Text(
-                'DevCompass',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.w900,
-                  letterSpacing: -0.8,
-                ),
-              ),
-              const SizedBox(height: 2),
-              Text(
-                title,
-                style: const TextStyle(
-                  color: Color(0xFF8B8B8B),
-                  fontSize: 11,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: 2,
-                ),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(width: 12),
-        Stack(
-          clipBehavior: Clip.none,
-          children: [
-            _IconButton(icon: Icons.notifications_none_rounded, onTap: () {}),
-            Positioned(
-              right: 12,
-              top: 12,
-              child: Container(
-                width: 8,
-                height: 8,
-                decoration: const BoxDecoration(
-                  color: Color(0xFFEF4444),
-                  shape: BoxShape.circle,
-                ),
-              ),
+    return Center(
+      child: Column(
+        children: [
+          Text(
+            'DevCompass',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+              fontWeight: FontWeight.w900,
+              letterSpacing: -0.8,
             ),
-          ],
-        ),
-      ],
+          ),
+          const SizedBox(height: 2),
+          Text(
+            title,
+            style: const TextStyle(
+              color: Color(0xFF8B8B8B),
+              fontSize: 11,
+              fontWeight: FontWeight.w700,
+              letterSpacing: 2,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
