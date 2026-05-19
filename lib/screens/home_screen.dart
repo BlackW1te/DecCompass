@@ -8,6 +8,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../screens/career_test_screen.dart';
 
+import '../screens/roadmap_screen.dart';
+
+import '../widgets/app_shell.dart';
+
+import '../screens/roadmap_screen.dart';
+
+import '../screens/projects_screen.dart';
+
+import '../screens/profile_screen.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -132,90 +142,119 @@ class _HeroCardState extends State<_HeroCard> {
 
   @override
   Widget build(BuildContext context) {
-    // Tüm kartı tıklanabilir yaptık
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const CareerTestScreen()),
-        ).then((_) {
-          // Kullanıcı testten geri döndüğünde skoru hemen ekrana yansıtmak için:
-          _loadResult();
-        });
-      },
-      child: GlassCard(
-        gradient: const LinearGradient(
-          colors: [Color(0x6611183A), Color(0x22000000)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
+    void openCareerTest() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const CareerTestScreen()),
+      ).then((_) {
+        _loadResult();
+      });
+    }
+
+    void openRoadmap() {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => AppShell(
+            initialIndex: 1,
+            tabs: const [
+              HomeScreen(),
+              RoadmapScreen(),
+              ProjectsScreen(),
+              ProfileScreen(),
+            ],
+          ),
         ),
-        child: Stack(
-          children: [
-            Positioned(
-              right: -24,
-              top: -24,
-              child: Container(
-                width: 120,
-                height: 120,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Color(0x1AA855F7),
-                ),
+      );
+    }
+
+    return GlassCard(
+      gradient: const LinearGradient(
+        colors: [Color(0x6611183A), Color(0x22000000)],
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+      ),
+      child: Stack(
+        children: [
+          Positioned(
+            right: -24,
+            top: -24,
+            child: Container(
+              width: 120,
+              height: 120,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: Color(0x1AA855F7),
               ),
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  hasTested ? 'ÖNERİLEN ALANIN' : 'YOL HARİTANI BELİRLE',
-                  style: const TextStyle(
-                    color: Color(0xFFA855F7),
-                    fontSize: 10,
-                    fontWeight: FontWeight.w900,
-                    letterSpacing: 2,
-                  ),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                hasTested ? 'ÖNERİLEN ALANIN' : 'YOL HARİTANI BELİRLE',
+                style: const TextStyle(
+                  color: Color(0xFFA855F7),
+                  fontSize: 10,
+                  fontWeight: FontWeight.w900,
+                  letterSpacing: 2,
                 ),
-                const SizedBox(height: 14),
-
-                Text(
-                  recommendedField,
-                  style: const TextStyle(
-                    fontSize: 24,
-                    height: 1.1,
-                    fontWeight: FontWeight.w900,
-                    letterSpacing: -0.8,
-                  ),
+              ),
+              const SizedBox(height: 14),
+              Text(
+                recommendedField,
+                style: const TextStyle(
+                  fontSize: 24,
+                  height: 1.1,
+                  fontWeight: FontWeight.w900,
+                  letterSpacing: -0.8,
                 ),
-
-                const SizedBox(height: 14),
-                // Sahte eşleşme oranını ve yüzüğü tamamen sildik.
-                Text(
-                  hasTested
-                      ? 'Profiline en uygun alan bu!'
-                      : 'Sana en uygun alanı bulmak için tıkla ve 10 soruluk testi tamamla.',
-                  style: const TextStyle(
-                    color: Color(0xFF9CA3AF),
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600,
-                  ),
+              ),
+              const SizedBox(height: 14),
+              Text(
+                hasTested
+                    ? 'Profiline en uygun alan bu!'
+                    : 'Sana en uygun alanı bulmak için tıkla ve 10 soruluk testi tamamla.',
+                style: const TextStyle(
+                  color: Color(0xFF9CA3AF),
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
                 ),
+              ),
+              const SizedBox(height: 14),
 
-                const SizedBox(height: 14),
-                _TextAction(
-                  label: hasTested ? 'Yol Haritasını Gör' : 'Teste Başla',
+              if (hasTested)
+                Row(
+                  children: [
+                    _TextActionButton(
+                      label: 'Yol Haritasını Bul',
+                      icon: Icons.map_rounded,
+                      accent: const Color(0xFFA855F7),
+                      onTap: openRoadmap,
+                    ),
+                    const SizedBox(width: 18),
+                    _TextActionButton(
+                      label: 'Tekrar Çöz',
+                      icon: Icons.refresh_rounded,
+                      accent: const Color(0xFF9CA3AF),
+                      onTap: openCareerTest,
+                    ),
+                  ],
+                )
+              else
+                _TextActionButton(
+                  label: 'Teste Başla',
                   icon: Icons.arrow_forward_rounded,
                   accent: const Color(0xFFA855F7),
+                  onTap: openCareerTest,
                 ),
-              ],
-            ),
-          ],
-        ),
+            ],
+          ),
+        ],
       ),
     );
   }
 }
-
-
 
 class _DailyTaskCard extends StatelessWidget {
   const _DailyTaskCard();
@@ -368,34 +407,43 @@ class _AltFieldCard extends StatelessWidget {
   }
 }
 
-class _TextAction extends StatelessWidget {
-  const _TextAction({
+class _TextActionButton extends StatelessWidget {
+  const _TextActionButton({
     required this.label,
     required this.icon,
     required this.accent,
+    required this.onTap,
   });
 
   final String label;
   final IconData icon;
   final Color accent;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Text(
-          label,
-          style: TextStyle(
-            color: accent,
-            fontSize: 11,
-            fontWeight: FontWeight.w900,
-            letterSpacing: 1.2,
-          ),
+    return InkWell(
+      borderRadius: BorderRadius.circular(12),
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 6),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              label,
+              style: TextStyle(
+                color: accent,
+                fontSize: 11,
+                fontWeight: FontWeight.w900,
+                letterSpacing: 1.2,
+              ),
+            ),
+            const SizedBox(width: 6),
+            Icon(icon, color: accent, size: 16),
+          ],
         ),
-        const SizedBox(width: 6),
-        Icon(icon, color: accent, size: 16),
-      ],
+      ),
     );
   }
 }
@@ -476,7 +524,8 @@ class _TechnicalEnglishTestCard extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) => const TestScreen(
               title: 'Teknik İngilizce Testi',
-              assetPath: 'lib/data/teknik_ingilizce_alan_bazli_test_sorulari_v2.json',
+              assetPath:
+                  'lib/data/teknik_ingilizce_alan_bazli_test_sorulari_v2.json',
               questionLimit: 20,
             ),
           ),
@@ -493,7 +542,10 @@ class _TechnicalEnglishTestCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(18),
                 border: Border.all(color: const Color(0x3360A5FA)),
               ),
-              child: const Icon(Icons.translate_rounded, color: Color(0xFF60A5FA)),
+              child: const Icon(
+                Icons.translate_rounded,
+                color: Color(0xFF60A5FA),
+              ),
             ),
             const SizedBox(width: 14),
             const Expanded(
@@ -518,7 +570,11 @@ class _TechnicalEnglishTestCard extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 8),
-            const Icon(Icons.arrow_forward_ios_rounded, size: 16, color: Color(0xFF60A5FA)),
+            const Icon(
+              Icons.arrow_forward_ios_rounded,
+              size: 16,
+              color: Color(0xFF60A5FA),
+            ),
           ],
         ),
       ),

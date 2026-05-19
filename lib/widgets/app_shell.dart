@@ -5,18 +5,25 @@ import 'package:flutter/material.dart';
 import 'shared_widgets.dart';
 
 class AppShell extends StatefulWidget {
-  const AppShell({super.key, required this.tabs});
+  const AppShell({super.key, required this.tabs, this.initialIndex = 0});
 
   final List<Widget> tabs;
+  final int initialIndex;
 
   @override
   State<AppShell> createState() => _AppShellState();
 }
 
 class _AppShellState extends State<AppShell> {
-  int _index = 0;
+  late int _index;
 
   static const _titles = ['Ana Sayfa', 'Yol Haritası', 'Projeler', 'Profil'];
+
+  @override
+  void initState() {
+    super.initState();
+    _index = widget.initialIndex;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +46,12 @@ class _AppShellState extends State<AppShell> {
                   return Column(
                     children: [
                       Padding(
-                        padding: EdgeInsets.fromLTRB(horizontal, 8, horizontal, 10),
+                        padding: EdgeInsets.fromLTRB(
+                          horizontal,
+                          8,
+                          horizontal,
+                          10,
+                        ),
                         child: _TopBar(title: _titles[_index]),
                       ),
                       Expanded(
@@ -47,7 +59,12 @@ class _AppShellState extends State<AppShell> {
                           duration: const Duration(milliseconds: 220),
                           child: Padding(
                             key: ValueKey(_index),
-                            padding: EdgeInsets.fromLTRB(horizontal, 0, horizontal, bottomContentPadding + bottomInset),
+                            padding: EdgeInsets.fromLTRB(
+                              horizontal,
+                              0,
+                              horizontal,
+                              bottomContentPadding + bottomInset,
+                            ),
                             child: widget.tabs[_index],
                           ),
                         ),
@@ -71,16 +88,38 @@ class _AppShellState extends State<AppShell> {
                 padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
                 decoration: BoxDecoration(
                   color: const Color(0x4D050505),
-                  border: Border.all(color: Colors.white.withValues(alpha: 0.06)),
+                  border: Border.all(
+                    color: Colors.white.withValues(alpha: 0.06),
+                  ),
                   borderRadius: BorderRadius.circular(28),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    BottomNavItem(label: 'Ana Sayfa', icon: Icons.home_rounded, active: _index == 0, onTap: () => setState(() => _index = 0)),
-                    BottomNavItem(label: 'Harita', icon: Icons.map_rounded, active: _index == 1, onTap: () => setState(() => _index = 1)),
-                    BottomNavItem(label: 'Projeler', icon: Icons.work_rounded, active: _index == 2, onTap: () => setState(() => _index = 2)),
-                    BottomNavItem(label: 'Profil', icon: Icons.person_rounded, active: _index == 3, onTap: () => setState(() => _index = 3)),
+                    BottomNavItem(
+                      label: 'Ana Sayfa',
+                      icon: Icons.home_rounded,
+                      active: _index == 0,
+                      onTap: () => setState(() => _index = 0),
+                    ),
+                    BottomNavItem(
+                      label: 'Harita',
+                      icon: Icons.map_rounded,
+                      active: _index == 1,
+                      onTap: () => setState(() => _index = 1),
+                    ),
+                    BottomNavItem(
+                      label: 'Projeler',
+                      icon: Icons.work_rounded,
+                      active: _index == 2,
+                      onTap: () => setState(() => _index = 2),
+                    ),
+                    BottomNavItem(
+                      label: 'Profil',
+                      icon: Icons.person_rounded,
+                      active: _index == 3,
+                      onTap: () => setState(() => _index = 3),
+                    ),
                   ],
                 ),
               ),
@@ -106,9 +145,24 @@ class _TopBar extends StatelessWidget {
         Expanded(
           child: Column(
             children: [
-              Text('DevCompass', textAlign: TextAlign.center, style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w900, letterSpacing: -0.8)),
+              Text(
+                'DevCompass',
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                  fontWeight: FontWeight.w900,
+                  letterSpacing: -0.8,
+                ),
+              ),
               const SizedBox(height: 2),
-              Text(title, style: const TextStyle(color: Color(0xFF8B8B8B), fontSize: 11, fontWeight: FontWeight.w700, letterSpacing: 2)),
+              Text(
+                title,
+                style: const TextStyle(
+                  color: Color(0xFF8B8B8B),
+                  fontSize: 11,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: 2,
+                ),
+              ),
             ],
           ),
         ),
@@ -120,7 +174,14 @@ class _TopBar extends StatelessWidget {
             Positioned(
               right: 12,
               top: 12,
-              child: Container(width: 8, height: 8, decoration: const BoxDecoration(color: Color(0xFFEF4444), shape: BoxShape.circle)),
+              child: Container(
+                width: 8,
+                height: 8,
+                decoration: const BoxDecoration(
+                  color: Color(0xFFEF4444),
+                  shape: BoxShape.circle,
+                ),
+              ),
             ),
           ],
         ),
@@ -143,7 +204,11 @@ class _IconButton extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(18),
-        child: SizedBox(width: 50, height: 50, child: Icon(icon, color: const Color(0xFF9CA3AF))),
+        child: SizedBox(
+          width: 50,
+          height: 50,
+          child: Icon(icon, color: const Color(0xFF9CA3AF)),
+        ),
       ),
     );
   }
@@ -155,12 +220,17 @@ class _Backdrop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SizedBox.expand(
-        child: DecoratedBox(
-          decoration: BoxDecoration(color: Color(0xFF050505)),
-          child: Stack(
+      child: DecoratedBox(
+        decoration: BoxDecoration(color: Color(0xFF050505)),
+        child: Stack(
           children: [
             _Glow(top: -120, left: -60, size: 280, color: Color(0x1AA855F7)),
-            _Glow(bottom: -120, right: -80, size: 320, color: Color(0x1A2563EB)),
+            _Glow(
+              bottom: -120,
+              right: -80,
+              size: 320,
+              color: Color(0x1A2563EB),
+            ),
             _Glow(top: 240, left: -100, size: 220, color: Color(0x1022C55E)),
             _Glow(bottom: 120, left: 20, size: 200, color: Color(0x0F8B5CF6)),
             _Glow(bottom: 40, right: 20, size: 180, color: Color(0x0F38BDF8)),
@@ -172,7 +242,14 @@ class _Backdrop extends StatelessWidget {
 }
 
 class _Glow extends StatelessWidget {
-  const _Glow({this.top, this.bottom, this.left, this.right, required this.size, required this.color});
+  const _Glow({
+    this.top,
+    this.bottom,
+    this.left,
+    this.right,
+    required this.size,
+    required this.color,
+  });
 
   final double? top;
   final double? bottom;
