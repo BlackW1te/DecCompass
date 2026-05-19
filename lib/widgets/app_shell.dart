@@ -155,30 +155,6 @@ class _TopBar extends StatelessWidget {
   }
 }
 
-class _IconButton extends StatelessWidget {
-  const _IconButton({required this.icon, required this.onTap});
-
-  final IconData icon;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: const Color(0x14FFFFFF),
-      borderRadius: BorderRadius.circular(18),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(18),
-        child: SizedBox(
-          width: 50,
-          height: 50,
-          child: Icon(icon, color: const Color(0xFF9CA3AF)),
-        ),
-      ),
-    );
-  }
-}
-
 class _Backdrop extends StatelessWidget {
   const _Backdrop();
 

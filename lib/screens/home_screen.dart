@@ -12,8 +12,6 @@ import '../screens/roadmap_screen.dart';
 
 import '../widgets/app_shell.dart';
 
-import '../screens/roadmap_screen.dart';
-
 import '../screens/projects_screen.dart';
 
 import '../screens/profile_screen.dart';

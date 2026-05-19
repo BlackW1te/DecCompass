@@ -285,6 +285,102 @@ class _ExpandableRoadmapCategory extends StatefulWidget {
 class _ExpandableRoadmapCategoryState
     extends State<_ExpandableRoadmapCategory> {
   bool _isExpanded = false;
+  final Set<String> _checkedItems = {};
+  final Set<int> _expandedSteps = {};
+
+  @override
+  void initState() {
+    super.initState();
+    _loadProgress();
+  }
+
+  String _itemKey(int stepIndex, int descIndex) {
+    return '${widget.category.title}_${stepIndex}_$descIndex';
+  }
+
+  Future<void> _loadProgress() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    final savedItems = <String>{};
+
+    for (
+      int stepIndex = 0;
+      stepIndex < widget.category.steps.length;
+      stepIndex++
+    ) {
+      final step = widget.category.steps[stepIndex];
+
+      for (
+        int descIndex = 0;
+        descIndex < step.descriptions.length;
+        descIndex++
+      ) {
+        final key = _itemKey(stepIndex, descIndex);
+
+        if (prefs.getBool(key) == true) {
+          savedItems.add(key);
+        }
+      }
+    }
+
+    setState(() {
+      _checkedItems
+        ..clear()
+        ..addAll(savedItems);
+
+      _expandedSteps.clear();
+
+      for (
+        int stepIndex = 0;
+        stepIndex < widget.category.steps.length;
+        stepIndex++
+      ) {
+        if (!_isStepCompleted(stepIndex)) {
+          _expandedSteps.add(stepIndex);
+        }
+      }
+    });
+  }
+
+  Future<void> _toggleItem({
+    required int stepIndex,
+    required int descIndex,
+    required bool value,
+  }) async {
+    final prefs = await SharedPreferences.getInstance();
+    final key = _itemKey(stepIndex, descIndex);
+
+    await prefs.setBool(key, value);
+
+    setState(() {
+      if (value) {
+        _checkedItems.add(key);
+      } else {
+        _checkedItems.remove(key);
+      }
+
+      if (_isStepCompleted(stepIndex)) {
+        _expandedSteps.remove(stepIndex);
+      } else {
+        _expandedSteps.add(stepIndex);
+      }
+    });
+  }
+
+  bool _isStepCompleted(int stepIndex) {
+    final step = widget.category.steps[stepIndex];
+
+    return step.descriptions.asMap().entries.every((entry) {
+      final descIndex = entry.key;
+      return _checkedItems.contains(_itemKey(stepIndex, descIndex));
+    });
+  }
+
+  bool _isCategoryCompleted() {
+    return widget.category.steps.asMap().entries.every((entry) {
+      return _isStepCompleted(entry.key);
+    });
+  }
 
   void expand() {
     if (!_isExpanded) {
@@ -298,17 +394,17 @@ class _ExpandableRoadmapCategoryState
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
-      child: GestureDetector(
-        onTap: () {
-          setState(() {
-            _isExpanded = !_isExpanded;
-          });
-        },
-        child: GlassCard(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
+      child: GlassCard(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  _isExpanded = !_isExpanded;
+                });
+              },
+              child: Row(
                 children: [
                   Container(
                     width: 42,
@@ -339,63 +435,168 @@ class _ExpandableRoadmapCategoryState
                       ),
                     ),
                   ),
+                  if (_isCategoryCompleted())
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 6,
+                      ),
+                      decoration: BoxDecoration(
+                        color: const Color(0x1A34D399),
+                        borderRadius: BorderRadius.circular(999),
+                        border: Border.all(color: const Color(0x3334D399)),
+                      ),
+                      child: const Row(
+                        children: [
+                          Icon(
+                            Icons.check_circle_rounded,
+                            size: 14,
+                            color: Color(0xFF34D399),
+                          ),
+                          SizedBox(width: 4),
+                          Text(
+                            'Tamamlandı',
+                            style: TextStyle(
+                              color: Color(0xFF34D399),
+                              fontSize: 10,
+                              fontWeight: FontWeight.w900,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                 ],
               ),
-              if (_isExpanded) ...[
-                const SizedBox(height: 16),
-                ...widget.category.steps.map((step) => _buildStepItem(step)),
-              ],
+            ),
+            if (_isExpanded) ...[
+              const SizedBox(height: 16),
+              ...widget.category.steps.asMap().entries.map(
+                (entry) => _buildStepItem(entry.key, entry.value),
+              ),
             ],
-          ),
+          ],
         ),
       ),
     );
   }
 
-  Widget _buildStepItem(RoadmapStep step) {
+  Widget _buildStepItem(int stepIndex, RoadmapStep step) {
+    final stepCompleted = _isStepCompleted(stepIndex);
+    final isStepExpanded = _expandedSteps.contains(stepIndex);
+
     return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            step.title,
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-              color: widget.accent,
-            ),
+      padding: const EdgeInsets.only(bottom: 12),
+      child: Container(
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: Colors.white.withValues(alpha: 0.03),
+          borderRadius: BorderRadius.circular(18),
+          border: Border.all(
+            color: stepCompleted
+                ? const Color(0x3334D399)
+                : widget.accent.withValues(alpha: 0.18),
           ),
-          const SizedBox(height: 6),
-          ...step.descriptions.map(
-            (desc) => Padding(
-              padding: const EdgeInsets.only(bottom: 4),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  if (isStepExpanded) {
+                    _expandedSteps.remove(stepIndex);
+                  } else {
+                    _expandedSteps.add(stepIndex);
+                  }
+                });
+              },
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    "• ",
-                    style: TextStyle(
-                      color: Color(0xFF9CA3AF),
-                      fontSize: 12,
-                      height: 1.5,
-                    ),
+                  Icon(
+                    isStepExpanded
+                        ? Icons.keyboard_arrow_down_rounded
+                        : Icons.keyboard_arrow_right_rounded,
+                    color: stepCompleted
+                        ? const Color(0xFF34D399)
+                        : widget.accent,
                   ),
+                  const SizedBox(width: 6),
                   Expanded(
                     child: Text(
-                      desc,
-                      style: const TextStyle(
-                        color: Color(0xFF9CA3AF),
-                        fontSize: 12,
-                        height: 1.5,
+                      step.title,
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: stepCompleted
+                            ? const Color(0xFF34D399)
+                            : widget.accent,
                       ),
                     ),
                   ),
+                  if (stepCompleted)
+                    const Icon(
+                      Icons.check_circle_rounded,
+                      size: 18,
+                      color: Color(0xFF34D399),
+                    ),
                 ],
               ),
             ),
-          ),
-        ],
+            if (isStepExpanded) ...[
+              const SizedBox(height: 10),
+              ...step.descriptions.asMap().entries.map((entry) {
+                final descIndex = entry.key;
+                final desc = entry.value;
+                final key = _itemKey(stepIndex, descIndex);
+                final checked = _checkedItems.contains(key);
+
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 6),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width: 28,
+                        height: 28,
+                        child: Checkbox(
+                          value: checked,
+                          activeColor: widget.accent,
+                          side: const BorderSide(
+                            color: Color(0xFF9CA3AF),
+                            width: 1.4,
+                          ),
+                          onChanged: (value) {
+                            _toggleItem(
+                              stepIndex: stepIndex,
+                              descIndex: descIndex,
+                              value: value ?? false,
+                            );
+                          },
+                        ),
+                      ),
+                      const SizedBox(width: 6),
+                      Expanded(
+                        child: Text(
+                          desc,
+                          style: TextStyle(
+                            color: checked
+                                ? const Color(0xFF6B7280)
+                                : const Color(0xFF9CA3AF),
+                            fontSize: 12,
+                            height: 1.5,
+                            decoration: checked
+                                ? TextDecoration.lineThrough
+                                : null,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }),
+            ],
+          ],
+        ),
       ),
     );
   }
