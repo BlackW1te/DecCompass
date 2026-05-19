@@ -16,6 +16,8 @@ import '../screens/projects_screen.dart';
 
 import '../screens/profile_screen.dart';
 
+import '../data/roadmap_data.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -238,8 +240,118 @@ class _HeroCardState extends State<_HeroCard> {
   }
 }
 
-class _DailyTaskCard extends StatelessWidget {
+class _DailyTaskCard extends StatefulWidget {
   const _DailyTaskCard();
+
+  @override
+  State<_DailyTaskCard> createState() => _DailyTaskCardState();
+}
+
+class _DailyTaskCardState extends State<_DailyTaskCard> {
+  String _taskTitle = 'Henüz günlük görev yok';
+  String _taskSubtitle = 'Kariyer testini çözerek kişisel görevini oluştur.';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadDailyTask();
+  }
+
+  String _mapTestResultToCategoryTitle(String result) {
+    switch (result) {
+      case "Web Geliştirme (Full-Stack)":
+        return "Web Geliştirme (Full-Stack)";
+      case "Mobil Uygulama Geliştirme":
+        return "Mobil Uygulama Geliştirme";
+      case "Yapay Zeka ve Makine Öğrenmesi":
+        return "Yapay Zeka ve Makine Öğrenmesi";
+      case "Veri Bilimi ve Büyük Veri":
+        return "Veri Bilimi & Büyük Veri";
+      case "Gömülü Sistemler ve IoT":
+        return "Gömülü Sistemler ve IoT";
+      case "Robotik ve Otomasyon":
+        return "Robotik ve Otomasyon";
+      case "Bulut Bilişim ve DevOps":
+        return "Bulut Bilişim";
+      case "Bilgisayar Ağları ve Sistem Yönetimi":
+        return "Bilgisayar Ağları ve Sistem Yönetimi";
+      case "Dijital Adli Bilişim ve Kriptografi":
+        return "Dijital Adli Bilişim ve Kriptografi";
+      case "Siber Güvenlik":
+        return "Siber Güvenlik";
+      case "Yazılım Mimarisi ve Proje Yönetimi":
+        return "Yazılım Mimarisi ve Proje Yönetimi";
+      case "Sanal ve Arttırılmış Gerçeklik (VR/AR)":
+        return "Sanal ve Artırılmış Gerçeklik (VR/AR)";
+      case "Oyun Geliştirme ve Grafik Programlama":
+        return "Oyun Geliştirme";
+      case "Blokzincir Teknolojileri":
+        return "Blokzincir Teknolojileri";
+      case "Donanım ve Mikroişlemci Tasarımı":
+        return "Donanım ve Mikroişlemci Tasarımı";
+      default:
+        return "";
+    }
+  }
+
+  String _itemKey(String categoryTitle, int stepIndex, int descIndex) {
+    return '${categoryTitle}_${stepIndex}_$descIndex';
+  }
+
+  Future<void> _loadDailyTask() async {
+    final prefs = await SharedPreferences.getInstance();
+    final recommendedField = prefs.getString('recommended_field');
+
+    if (recommendedField == null) {
+      setState(() {
+        _taskTitle = 'Kariyer testini çöz';
+        _taskSubtitle = 'Sana özel görevleri görmek için önce alanını belirle.';
+      });
+      return;
+    }
+
+    final targetTitle = _mapTestResultToCategoryTitle(recommendedField);
+
+    final category = roadmapCategories
+        .where((cat) => cat.title == targetTitle)
+        .cast<RoadmapCategory?>()
+        .firstWhere((cat) => cat != null, orElse: () => null);
+
+    if (category == null) {
+      setState(() {
+        _taskTitle = 'Günlük görev bulunamadı';
+        _taskSubtitle = 'Önerilen alan yol haritasıyla eşleşmedi.';
+      });
+      return;
+    }
+
+    for (int stepIndex = 0; stepIndex < category.steps.length; stepIndex++) {
+      final step = category.steps[stepIndex];
+
+      for (
+        int descIndex = 0;
+        descIndex < step.descriptions.length;
+        descIndex++
+      ) {
+        final key = _itemKey(category.title, stepIndex, descIndex);
+        final isChecked = prefs.getBool(key) == true;
+
+        if (!isChecked) {
+          setState(() {
+            _taskTitle = step.descriptions[descIndex];
+            _taskSubtitle = '${category.title} • ${step.title}';
+          });
+          return;
+        }
+      }
+    }
+
+    setState(() {
+      _taskTitle = 'Tebrikler! Alan görevlerini tamamladın';
+      _taskSubtitle =
+          '${category.title} yol haritasındaki tüm maddeler tamamlandı.';
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -260,51 +372,28 @@ class _DailyTaskCard extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 14),
-          const Expanded(
+          Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Flutter ile basit bir To-Do uygulaması yap',
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  '2 / 5 ADIM TAMAMLANDI',
-                  style: TextStyle(
-                    fontSize: 9,
-                    color: Color(0xFF9CA3AF),
-                    fontWeight: FontWeight.w900,
-                    letterSpacing: 1.2,
+                  _taskTitle,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w800,
                   ),
                 ),
-                SizedBox(height: 6),
-                ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(99)),
-                  child: LinearProgressIndicator(
-                    value: 0.4,
-                    minHeight: 6,
-                    backgroundColor: Color(0x0DFFFFFF),
-                    valueColor: AlwaysStoppedAnimation(Color(0xFF3B82F6)),
+                const SizedBox(height: 8),
+                Text(
+                  _taskSubtitle,
+                  style: const TextStyle(
+                    fontSize: 10,
+                    color: Color(0xFF9CA3AF),
+                    fontWeight: FontWeight.w800,
+                    height: 1.3,
                   ),
                 ),
               ],
-            ),
-          ),
-          const SizedBox(width: 14),
-          FilledButton(
-            onPressed: () {},
-            style: FilledButton.styleFrom(
-              backgroundColor: Colors.white,
-              foregroundColor: Colors.black,
-              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(18),
-              ),
-            ),
-            child: const Text(
-              'Devam Et',
-              style: TextStyle(fontSize: 11, fontWeight: FontWeight.w900),
             ),
           ),
         ],
