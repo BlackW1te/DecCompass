@@ -17,6 +17,7 @@ import '../screens/projects_screen.dart';
 import '../screens/profile_screen.dart';
 
 import '../data/roadmap_data.dart';
+import '../data/projects_data.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -67,19 +68,19 @@ class HomeScreen extends StatelessWidget {
               children: const [
                 _AltFieldCard(
                   name: 'Web Geliştirme',
-                  match: 74,
+                  categoryTitle: 'Web Geliştirme (Full-Stack)',
                   icon: Icons.language_rounded,
                   accent: Color(0xFF60A5FA),
                 ),
                 _AltFieldCard(
                   name: 'Oyun Geliştirme',
-                  match: 63,
+                  categoryTitle: 'Oyun Geliştirme',
                   icon: Icons.sports_esports_rounded,
                   accent: Color(0xFFA855F7),
                 ),
                 _AltFieldCard(
                   name: 'Veri Bilimi',
-                  match: 58,
+                  categoryTitle: 'Veri Bilimi & Büyük Veri',
                   icon: Icons.query_stats_rounded,
                   accent: Color(0xFF34D399),
                 ),
@@ -250,6 +251,7 @@ class _DailyTaskCard extends StatefulWidget {
 class _DailyTaskCardState extends State<_DailyTaskCard> {
   String _taskTitle = 'Henüz günlük görev yok';
   String _taskSubtitle = 'Kariyer testini çözerek kişisel görevini oluştur.';
+  ProjectModel? _activeProject;
 
   @override
   void initState() {
@@ -282,6 +284,7 @@ class _DailyTaskCardState extends State<_DailyTaskCard> {
       case "Yazılım Mimarisi ve Proje Yönetimi":
         return "Yazılım Mimarisi ve Proje Yönetimi";
       case "Sanal ve Arttırılmış Gerçeklik (VR/AR)":
+      case "Sanal ve Artırılmış Gerçeklik (VR/AR)":
         return "Sanal ve Artırılmış Gerçeklik (VR/AR)";
       case "Oyun Geliştirme ve Grafik Programlama":
         return "Oyun Geliştirme";
@@ -300,6 +303,47 @@ class _DailyTaskCardState extends State<_DailyTaskCard> {
 
   Future<void> _loadDailyTask() async {
     final prefs = await SharedPreferences.getInstance();
+    
+    // Check if there is an active project
+    final activeTitle = prefs.getString('active_project_title');
+    if (activeTitle != null) {
+      final proj = projectsList
+          .where((p) => p.title == activeTitle)
+          .cast<ProjectModel?>()
+          .firstWhere((p) => p != null, orElse: () => null);
+          
+      if (proj != null) {
+        _activeProject = proj;
+        final category = roadmapCategories.firstWhere(
+          (cat) => cat.title == proj.categoryTitle,
+          orElse: () => roadmapCategories[0],
+        );
+        
+        int incompleteStepIndex = -1;
+        for (int i = 0; i < category.steps.length; i++) {
+          final isCompleted = prefs.getBool('project_progress_${proj.title}_$i') == true;
+          if (!isCompleted) {
+            incompleteStepIndex = i;
+            break;
+          }
+        }
+        
+        if (incompleteStepIndex != -1) {
+          setState(() {
+            _taskTitle = category.steps[incompleteStepIndex].title;
+            _taskSubtitle = 'Aktif Proje: ${proj.title} (${proj.categoryTitle})';
+          });
+        } else {
+          setState(() {
+            _taskTitle = 'Tebrikler! Projeyi tamamladın';
+            _taskSubtitle = 'Aktif Proje: ${proj.title} • Gelişmeye devam et!';
+          });
+        }
+        return;
+      }
+    }
+
+    _activeProject = null;
     final recommendedField = prefs.getString('recommended_field');
 
     if (recommendedField == null) {
@@ -353,124 +397,230 @@ class _DailyTaskCardState extends State<_DailyTaskCard> {
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return GlassCard(
-      child: Row(
-        children: [
-          Container(
-            width: 54,
-            height: 54,
-            decoration: BoxDecoration(
-              color: const Color(0x1AA855F7),
-              borderRadius: BorderRadius.circular(18),
-              border: Border.all(color: const Color(0x33A855F7)),
-            ),
-            child: const Icon(
-              Icons.check_circle_outline_rounded,
-              color: Color(0xFFB16CF9),
-            ),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  _taskTitle,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w800,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  _taskSubtitle,
-                  style: const TextStyle(
-                    fontSize: 10,
-                    color: Color(0xFF9CA3AF),
-                    fontWeight: FontWeight.w800,
-                    height: 1.3,
-                  ),
-                ),
+  void _onTap() async {
+    if (_activeProject != null) {
+      showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        builder: (context) => ProjectDetailBottomSheet(
+          project: _activeProject!,
+          onProjectStarted: () {
+            _loadDailyTask();
+          },
+        ),
+      );
+    } else {
+      final prefs = await SharedPreferences.getInstance();
+      if (!mounted) return;
+      final recommendedField = prefs.getString('recommended_field');
+      if (recommendedField == null) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const CareerTestScreen()),
+        ).then((_) => _loadDailyTask());
+      } else {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => AppShell(
+              initialIndex: 1,
+              tabs: const [
+                HomeScreen(),
+                RoadmapScreen(),
+                ProjectsScreen(),
+                ProfileScreen(),
               ],
             ),
           ),
-        ],
+        );
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: _onTap,
+      child: GlassCard(
+        child: Row(
+          children: [
+            Container(
+              width: 54,
+              height: 54,
+              decoration: BoxDecoration(
+                color: const Color(0x1AA855F7),
+                borderRadius: BorderRadius.circular(18),
+                border: Border.all(color: const Color(0x33A855F7)),
+              ),
+              child: const Icon(
+                Icons.check_circle_outline_rounded,
+                color: Color(0xFFB16CF9),
+              ),
+            ),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    _taskTitle,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    _taskSubtitle,
+                    style: const TextStyle(
+                      fontSize: 10,
+                      color: Color(0xFF9CA3AF),
+                      fontWeight: FontWeight.w800,
+                      height: 1.3,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
-class _AltFieldCard extends StatelessWidget {
+class _AltFieldCard extends StatefulWidget {
   const _AltFieldCard({
     required this.name,
-    required this.match,
+    required this.categoryTitle,
     required this.icon,
     required this.accent,
   });
 
   final String name;
-  final int match;
+  final String categoryTitle;
   final IconData icon;
   final Color accent;
+
+  @override
+  State<_AltFieldCard> createState() => _AltFieldCardState();
+}
+
+class _AltFieldCardState extends State<_AltFieldCard> {
+  int _completionPercentage = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadProgress();
+  }
+
+  Future<void> _loadProgress() async {
+    final prefs = await SharedPreferences.getInstance();
+    
+    final category = roadmapCategories
+        .where((cat) => cat.title == widget.categoryTitle)
+        .cast<RoadmapCategory?>()
+        .firstWhere((cat) => cat != null, orElse: () => null);
+
+    if (category == null) return;
+
+    int totalItems = 0;
+    int checkedItems = 0;
+
+    for (int stepIndex = 0; stepIndex < category.steps.length; stepIndex++) {
+      final step = category.steps[stepIndex];
+      for (int descIndex = 0; descIndex < step.descriptions.length; descIndex++) {
+        totalItems++;
+        final key = '${category.title}_${stepIndex}_$descIndex';
+        if (prefs.getBool(key) == true) {
+          checkedItems++;
+        }
+      }
+    }
+
+    if (mounted) {
+      setState(() {
+        _completionPercentage = totalItems > 0 ? ((checkedItems / totalItems) * 100).round() : 0;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(right: 12),
-      child: SizedBox(
-        width: 155,
-        child: GlassCard(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    width: 34,
-                    height: 34,
-                    decoration: BoxDecoration(
-                      color: accent.withValues(alpha: 0.12),
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: accent.withValues(alpha: 0.25)),
-                    ),
-                    child: Icon(icon, size: 18, color: accent),
-                  ),
-                  Text(
-                    '%$match',
-                    style: const TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AppShell(
+                initialIndex: 1,
+                tabs: [
+                  const HomeScreen(),
+                  RoadmapScreen(initialCategoryTitle: widget.categoryTitle),
+                  const ProjectsScreen(),
+                  const ProfileScreen(),
                 ],
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    name,
-                    style: const TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w900,
+            ),
+          );
+        },
+        child: SizedBox(
+          width: 155,
+          child: GlassCard(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 34,
+                      height: 34,
+                      decoration: BoxDecoration(
+                        color: widget.accent.withValues(alpha: 0.12),
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(color: widget.accent.withValues(alpha: 0.25)),
+                      ),
+                      child: Icon(widget.icon, size: 18, color: widget.accent),
                     ),
-                  ),
-                  const SizedBox(height: 4),
-                  const Text(
-                    'Eşleşme',
-                    style: TextStyle(
-                      fontSize: 9,
-                      color: Color(0xFF6B7280),
-                      fontWeight: FontWeight.w900,
-                      letterSpacing: 1.2,
+                    Text(
+                      '%$_completionPercentage',
+                      style: const TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w900,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      widget.name,
+                      style: const TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    const Text(
+                      'Tamamlanma',
+                      style: TextStyle(
+                        fontSize: 9,
+                        color: Color(0xFF6B7280),
+                        fontWeight: FontWeight.w900,
+                        letterSpacing: 1.2,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

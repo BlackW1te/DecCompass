@@ -7,7 +7,9 @@ import '../widgets/shared_widgets.dart';
 import '../screens/career_test_screen.dart';
 
 class RoadmapScreen extends StatefulWidget {
-  const RoadmapScreen({super.key});
+  final String? initialCategoryTitle;
+
+  const RoadmapScreen({super.key, this.initialCategoryTitle});
 
   @override
   State<RoadmapScreen> createState() => _RoadmapScreenState();
@@ -25,6 +27,27 @@ class _RoadmapScreenState extends State<RoadmapScreen> {
       (index) => GlobalKey<_ExpandableRoadmapCategoryState>(),
     );
     _loadRecommendedField();
+
+    if (widget.initialCategoryTitle != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _expandAndScrollTo(widget.initialCategoryTitle!);
+      });
+    }
+  }
+
+  void _expandAndScrollTo(String title) {
+    int targetIndex = roadmapCategories.indexWhere((cat) => cat.title == title);
+    if (targetIndex != -1) {
+      final key = _categoryKeys[targetIndex];
+      key.currentState?.expand();
+      if (key.currentContext != null) {
+        Scrollable.ensureVisible(
+          key.currentContext!,
+          duration: const Duration(milliseconds: 500),
+          curve: Curves.easeInOut,
+        );
+      }
+    }
   }
 
   String _mapTestResultToCategoryTitle(String result) {
@@ -77,22 +100,7 @@ class _RoadmapScreenState extends State<RoadmapScreen> {
     }
 
     String targetTitle = _mapTestResultToCategoryTitle(_recommendedField);
-    int targetIndex = roadmapCategories.indexWhere(
-      (cat) => cat.title == targetTitle,
-    );
-
-    if (targetIndex != -1) {
-      final key = _categoryKeys[targetIndex];
-      key.currentState?.expand();
-
-      if (key.currentContext != null) {
-        Scrollable.ensureVisible(
-          key.currentContext!,
-          duration: const Duration(milliseconds: 500),
-          curve: Curves.easeInOut,
-        );
-      }
-    }
+    _expandAndScrollTo(targetTitle);
   }
 
   Future<void> _loadRecommendedField() async {
@@ -101,6 +109,187 @@ class _RoadmapScreenState extends State<RoadmapScreen> {
       _recommendedField =
           prefs.getString('recommended_field') ?? "Henüz Test Çözülmedi";
     });
+  }
+
+  void _showFieldPicker() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) {
+        return Container(
+          constraints: BoxConstraints(
+            maxHeight: MediaQuery.of(context).size.height * 0.7,
+          ),
+          padding: const EdgeInsets.fromLTRB(20, 16, 20, 24),
+          decoration: BoxDecoration(
+            color: const Color(0xFF0F172A),
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+            border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Center(
+                child: Container(
+                  width: 46,
+                  height: 5,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.15),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 18),
+              const Text(
+                'ALAN SEÇ',
+                style: TextStyle(
+                  color: Color(0xFFA855F7),
+                  fontSize: 12,
+                  fontWeight: FontWeight.w900,
+                  letterSpacing: 2,
+                ),
+              ),
+              const SizedBox(height: 6),
+              const Text(
+                'Devam etmek istediğin alanı seç',
+                style: TextStyle(
+                  color: Color(0xFF9CA3AF),
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(height: 16),
+              Flexible(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: roadmapCategories.length,
+                  itemBuilder: (context, index) {
+                    final category = roadmapCategories[index];
+                    final isSelected = category.title == _recommendedField;
+                    const colors = [
+                      Color(0xFF60A5FA),
+                      Color(0xFFA855F7),
+                      Color(0xFFF59E0B),
+                      Color(0xFF34D399),
+                    ];
+                    final accent = colors[index % colors.length];
+
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 8),
+                      child: GestureDetector(
+                        onTap: () async {
+                          final prefs = await SharedPreferences.getInstance();
+                          await prefs.setString('recommended_field', category.title);
+                          setState(() {
+                            _recommendedField = category.title;
+                          });
+                          if (context.mounted) {
+                            Navigator.pop(context);
+                          }
+                          // Scroll to selected category after modal closes
+                          Future.delayed(const Duration(milliseconds: 350), () {
+                            _expandAndScrollTo(category.title);
+                          });
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                          decoration: BoxDecoration(
+                            color: isSelected
+                                ? accent.withValues(alpha: 0.12)
+                                : Colors.white.withValues(alpha: 0.03),
+                            borderRadius: BorderRadius.circular(16),
+                            border: Border.all(
+                              color: isSelected
+                                  ? accent.withValues(alpha: 0.4)
+                                  : Colors.white.withValues(alpha: 0.06),
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 38,
+                                height: 38,
+                                decoration: BoxDecoration(
+                                  color: accent.withValues(alpha: 0.12),
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                child: Icon(
+                                  _getCategoryIcon(category.title),
+                                  color: accent,
+                                  size: 20,
+                                ),
+                              ),
+                              const SizedBox(width: 14),
+                              Expanded(
+                                child: Text(
+                                  category.title,
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w800,
+                                    color: isSelected ? accent : Colors.white,
+                                  ),
+                                ),
+                              ),
+                              if (isSelected)
+                                Icon(
+                                  Icons.check_circle_rounded,
+                                  color: accent,
+                                  size: 22,
+                                ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  IconData _getCategoryIcon(String category) {
+    switch (category) {
+      case "Siber Güvenlik":
+        return Icons.shield_rounded;
+      case "Yapay Zeka ve Makine Öğrenmesi":
+        return Icons.psychology_rounded;
+      case "Veri Bilimi & Büyük Veri":
+        return Icons.analytics_rounded;
+      case "DevOps Mühendisliği":
+        return Icons.terminal_rounded;
+      case "Bulut Bilişim":
+        return Icons.cloud_rounded;
+      case "Robotik ve Otomasyon":
+        return Icons.smart_toy_rounded;
+      case "Gömülü Sistemler ve IoT":
+        return Icons.developer_board_rounded;
+      case "Sanal ve Artırılmış Gerçeklik (VR/AR)":
+        return Icons.view_in_ar_rounded;
+      case "Dijital Adli Bilişim ve Kriptografi":
+        return Icons.fingerprint_rounded;
+      case "Bilgisayar Ağları ve Sistem Yönetimi":
+        return Icons.router_rounded;
+      case "Yazılım Mimarisi ve Proje Yönetimi":
+        return Icons.account_tree_rounded;
+      case "Blokzincir Teknolojileri":
+        return Icons.currency_bitcoin_rounded;
+      case "Donanım ve Mikroişlemci Tasarımı":
+        return Icons.memory_rounded;
+      case "Mobil Uygulama Geliştirme":
+        return Icons.phone_android_rounded;
+      case "Web Geliştirme (Full-Stack)":
+        return Icons.language_rounded;
+      case "Oyun Geliştirme":
+        return Icons.sports_esports_rounded;
+      default:
+        return Icons.code_rounded;
+    }
   }
 
   @override
@@ -142,7 +331,7 @@ class _RoadmapScreenState extends State<RoadmapScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
-                        'Önerilen Alan',
+                        'SEÇİLİ ALAN',
                         style: TextStyle(
                           color: Color(0xFF818CF8),
                           fontSize: 10,
@@ -170,19 +359,48 @@ class _RoadmapScreenState extends State<RoadmapScreen> {
                         ),
                       ),
                       const SizedBox(height: 14),
-                      FilledButton(
-                        onPressed: _onStartPressed,
-                        style: FilledButton.styleFrom(
-                          backgroundColor: const Color(0xFFA855F7),
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16),
+                      Row(
+                        children: [
+                          Expanded(
+                            flex: 2,
+                            child: FilledButton(
+                              onPressed: _onStartPressed,
+                              style: FilledButton.styleFrom(
+                                backgroundColor: const Color(0xFFA855F7),
+                                foregroundColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                ),
+                              ),
+                              child: const Text(
+                                'Başla',
+                                style: TextStyle(fontWeight: FontWeight.w900),
+                              ),
+                            ),
                           ),
-                        ),
-                        child: const Text(
-                          'Başla',
-                          style: TextStyle(fontWeight: FontWeight.w900),
-                        ),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            flex: 3,
+                            child: OutlinedButton.icon(
+                              onPressed: _showFieldPicker,
+                              icon: const Icon(Icons.swap_horiz_rounded, size: 16),
+                              label: const Text(
+                                'Değiştir',
+                                style: TextStyle(fontWeight: FontWeight.w900, fontSize: 13),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                foregroundColor: const Color(0xFF818CF8),
+                                side: const BorderSide(color: Color(0x33818CF8)),
+                                padding: const EdgeInsets.symmetric(horizontal: 8),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -230,37 +448,7 @@ class _RoadmapScreenState extends State<RoadmapScreen> {
               accent: colors[index % colors.length],
             );
           }),
-          const SizedBox(height: 18),
-          GlassCard(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text(
-                  'Sonraki Hedef',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w900),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  'API çağrıları yapan küçük bir hava durumu uygulaması geliştir.',
-                  style: TextStyle(
-                    color: Color(0xFF9CA3AF),
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                SizedBox(height: 14),
-                Row(
-                  children: [
-                    Pill(label: 'Flutter', color: Color(0xFF8B5CF6)),
-                    SizedBox(width: 8),
-                    Pill(label: 'API', color: Color(0xFF38BDF8)),
-                    SizedBox(width: 8),
-                    Pill(label: 'UI', color: Color(0xFF34D399)),
-                  ],
-                ),
-              ],
-            ),
-          ),
+          const SizedBox(height: 24),
         ],
       ),
     );

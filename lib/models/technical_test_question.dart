@@ -34,6 +34,20 @@ class TechnicalTestQuestion {
   });
 
   factory TechnicalTestQuestion.fromJson(Map<String, dynamic> json) {
+    final List<String> parsedOptions = (json['options'] as List<dynamic>? ?? const [])
+        .map((e) => e.toString())
+        .toList();
+    
+    final int originalCorrectIndex = (json['correctIndex'] as num?)?.toInt() ?? -1;
+    final String correctOptionText = (originalCorrectIndex >= 0 && originalCorrectIndex < parsedOptions.length)
+        ? parsedOptions[originalCorrectIndex]
+        : '';
+
+    parsedOptions.shuffle();
+    final int newCorrectIndex = correctOptionText.isNotEmpty
+        ? parsedOptions.indexOf(correctOptionText)
+        : originalCorrectIndex;
+
     return TechnicalTestQuestion(
       id: (json['id'] ?? '').toString(),
       category: (json['category'] ?? '').toString(),
@@ -41,11 +55,9 @@ class TechnicalTestQuestion {
       difficulty: (json['difficulty'] ?? '').toString(),
       weight: (json['weight'] as num?)?.toDouble() ?? 0,
       question: (json['question'] ?? '').toString(),
-      options: (json['options'] as List<dynamic>? ?? const [])
-          .map((e) => e.toString())
-          .toList(growable: false),
+      options: parsedOptions.toList(growable: false),
       correctAnswer: (json['correctAnswer'] ?? '').toString(),
-      correctIndex: (json['correctIndex'] as num?)?.toInt() ?? -1,
+      correctIndex: newCorrectIndex,
       explanation: (json['explanation'] ?? '').toString(),
       sourceTerms: (json['sourceTerms'] as List<dynamic>? ?? const [])
           .map((e) => e.toString())

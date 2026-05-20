@@ -203,12 +203,7 @@ class _QuestionPage extends StatelessWidget {
             textAlign: TextAlign.center,
             style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w900, height: 1.25),
           ),
-          const SizedBox(height: 12),
-          Text(
-            '${question.category} • ${question.difficulty} • ağırlık ${question.weight.toStringAsFixed(1)}',
-            textAlign: TextAlign.center,
-            style: const TextStyle(color: Colors.white54, fontSize: 12, fontWeight: FontWeight.w700),
-          ),
+
           const SizedBox(height: 36),
           ...List.generate(question.options.length, (index) {
             final isSelected = selectedIndex == index;
